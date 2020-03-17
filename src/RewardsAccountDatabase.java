@@ -1,30 +1,28 @@
 
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;	
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class RewardsAccountDatabase {
-	private static final String ACCOUNT_FILE_NAME = "accounts.json";
+	private static final String FILE_NAME = "src/accounts.json";
 	
 	private static ArrayList<RewardsAccount> accountsList;
-	
-	public RewardsAccountDatabase() {
-		//this.accounts = loadAccounts();
-	}
 	
 	public static void loadAccounts() {
 		ArrayList<RewardsAccount> accounts = new ArrayList<RewardsAccount>();
 		JSONParser parser = new JSONParser();
 		
 		try {
-			FileReader reader = new FileReader("src/accounts.json");
+			FileReader reader = new FileReader(FILE_NAME);
 			
 			JSONObject jsonData = (JSONObject)parser.parse(reader);
 			JSONArray accountsJSON = (JSONArray)jsonData.get("accounts");
 			
-			for(int i = 0; i < accountsJSON.size(); i++) {
+			for (int i = 0; i < accountsJSON.size(); i++) {
 				JSONObject accountJSON = (JSONObject)accountsJSON.get(i);
 				String username = (String)accountJSON.get("username");
 				String password = (String)accountJSON.get("password");

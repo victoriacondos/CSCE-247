@@ -46,7 +46,11 @@ public class Dialogue {
 		int command = -1;
 		while (command > numCommands || command < 0) {
 			input = scanner.nextLine();
-			command = Integer.parseInt(input);
+			try {
+				command = Integer.parseInt(input);
+			} catch (NumberFormatException ex) {
+				System.out.println("\tERROR: Invalid Input");
+			}
 		}
 		return command;
 	}

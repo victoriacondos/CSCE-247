@@ -10,7 +10,7 @@ public class LogInCommand implements Command {
 			UserInterface.user = accountLoggedIn;
 			UserInterface.setMenu(1);
 		} else {
-			System.out.println("\n\tERROR: That account does not exist\n");
+			System.out.println("\tERROR: That account does not exist\n");
 		}
 	}
 }
