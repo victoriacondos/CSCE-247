@@ -4,19 +4,9 @@
  * Purpose: Base class of ticket that is decorated with discounts and screening options
  */
 public abstract class Ticket { //TODO- should this be abstract? with standard as a decoration?
-	private Event event;
-	private int seat;
-	private double cost;
-	
-	/**
-	 * Purpose: ticket constructor assigns info to correct variables
-	 * @param event
-	 * @param seat
-	 */
-	public Ticket(Event event, int seat) { //TODO- should this also be setting the cost?
-		this.event = event;
-		this.seat = seat;
-	}
+	protected Event event;
+	protected int seat;
+	protected double cost;
 	
 	/**
 	 * Purpose: Accessor for event variable
