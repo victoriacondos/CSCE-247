@@ -1,4 +1,3 @@
-<<<<<<< feature-elizabeth
 /**
  * @author Elizabeth Stevenson
  * Purpose: to create the different types of events
@@ -35,9 +34,5 @@ public class Event {
 				" Time: " + this.time +
 				" Price: " + this.price;
 	}
-=======
-
-public class Event {
-
->>>>>>> master
 }
+
