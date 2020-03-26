@@ -8,24 +8,24 @@ public class SeniorDiscount {
 	private final double PERCENT_OF_TOTAL = .80; 
 	
 	/**
-	 * Purpose:
-	 * @param ticket
+	 * Purpose: SeniorDiscount construct sets private ticket to inputted one
+	 * @param ticket: a Ticket object to be decorated
 	 */
 	public SeniorDiscount(Ticket ticket) {
 		this.ticket = ticket;
 	} 
 	
 	/**
-	 * Purpose:
-	 * @return
+	 * Purpose: Appends additional information to ticket's toString method
+	 * @return String statement of ticket's information
 	 */
 	public String toString() {
 		return ticket.toString() + " Discount: Senior Citizen";
 	}
 	
 	/**
-	 * Purpose:
-	 * @return
+	 * Purpose: Alters the cost of ticket based on discount
+	 * @return double value of tickets updated price
 	 */
 	public double getCost() {
 		return ticket.getCost() * PERCENT_OF_TOTAL;
