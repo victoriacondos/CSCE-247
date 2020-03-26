@@ -8,23 +8,23 @@ public class TeacherDiscount {
 	private final double PERCENT_OF_TOTAL = .90;
 	
 	/**
-	 * 
-	 * @param ticket
+	 * Purpose: constructor that sets private ticket to param ticket
+	 * @param ticket: a Ticket object to be decorated with discount
 	 */
 	public TeacherDiscount(Ticket ticket) {
 		this.ticket = ticket;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Purpose: Appends discount information to end of information statement
+	 * @return String of all of ticket's information
 	 */
 	public String toString() {
 		return ticket.toString() + " Discount: Teacher";
 	}
 	
 	/**
-	 * 
+	 * Purpose: alters the cost of ticket based on discount (PERCENT_OF_TOTAL is (100- percent discount)/100)
 	 * @return
 	 */
 	public double getCost() {

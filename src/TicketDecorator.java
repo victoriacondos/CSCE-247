@@ -4,10 +4,8 @@
  * Purpose: Abstract base class that decorations inherit toString method from
  */
 public abstract class TicketDecorator extends Ticket {
-	public TicketDecorator(Event event, int seat) {
-		super(event, seat);
-		// TODO Auto-generated constructor stub
-	}
-
+	/**
+	 * Purpose: abstract method to show that all ticket decorating related classes need a toString method
+	 */
 	public abstract String toString();
 }

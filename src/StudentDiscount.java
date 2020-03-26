@@ -8,24 +8,24 @@
 	private final double PERCENT_OF_TOTAL = .90;
 	
 	/**
-	 * Purpose:
-	 * @param ticket
+	 * Purpose: Constructor that sets private ticket to param ticket
+	 * @param ticket: a Ticket object to be decorated with discount
 	 */
 	public StudentDiscount(Ticket ticket) {
 		this.ticket = ticket;
 	}
 	
 	/**
-	 * Purpose:
-	 * @return
+	 * Purpose: Appends discount information to end of ticket's pre-existing information
+	 * @return String statement of all of tickets information
 	 */
 	public String toString() {
 		return ticket.toString() + " Discount: Student";
 	}
 	
 	/**
-	 * Purpose:
-	 * @return
+	 * Purpose: Alters the cost of the ticket based on ticket cost after discount (PERCENT_OF_TOTAL is (100- percent discount)/100)
+	 * @return double value of new price of ticket
 	 */
 	public double getCost() {
 		return ticket.getCost() * PERCENT_OF_TOTAL;

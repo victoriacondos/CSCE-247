@@ -9,7 +9,7 @@ public class SeniorDiscount {
 	
 	/**
 	 * Purpose: SeniorDiscount construct sets private ticket to inputted one
-	 * @param ticket: a Ticket object to be decorated
+	 * @param ticket: a Ticket object to be decorated with discount
 	 */
 	public SeniorDiscount(Ticket ticket) {
 		this.ticket = ticket;
@@ -24,7 +24,7 @@ public class SeniorDiscount {
 	}
 	
 	/**
-	 * Purpose: Alters the cost of ticket based on discount
+	 * Purpose: Alters the cost of ticket based on discount (PERCENT_OF_TOTAL is (100- percent discount)/100)
 	 * @return double value of tickets updated price
 	 */
 	public double getCost() {
