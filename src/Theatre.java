@@ -13,8 +13,9 @@ public class Theatre extends Event {
 	 * @param directors: the people who directed the production of the threatre show.
 	 * @param cast: actors within the theatre show.
 	 */
-	public Theatre(TheatreGenre genre, String[] directors, String[] cast) {
-		this.TheatreGenre = genre;
+	public Theatre(String title, String location, double price, TheatreGenre genre, String[] directors, String[] cast) {
+		super(title, location, price);
+		this.genre = genre;
 		this.directors = directors;
 		this.cast = cast;
 	}
@@ -69,10 +70,11 @@ public class Theatre extends Event {
 
 	/**
 	 * Purpose: sends message displaying attributes of Theatre when called.
-	 * @return String to user
+	 * @return String statement of parameters from Theatre.
 	 */
 	public String toString() {
-		// TODO
+		return super.toString() + " Genre: " + this.genre + " Directors: " + this.directors +
+				" Cast: " + this.cast;
 	}
 	
 }

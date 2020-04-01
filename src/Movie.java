@@ -15,7 +15,8 @@ public class Movie extends Event {
 	 * @param directors: The directors who helped film the movie.
 	 * @param cast: actors that performed within the movie.
 	 */
-	public Movie(MovieGenre genre, MpaRating rating, String[] directors, String[] cast) {
+	public Movie(String title, String location, double price, MovieGenre genre, MpaRating rating, String[] directors, String[] cast) {
+		super(title, location, price);
 		this.genre = genre;
 		this.rating = rating;
 		this.directors = directors;
@@ -88,9 +89,10 @@ public class Movie extends Event {
 
 	/**
 	 * Purpose: sends message displaying attributes of Movie when called.
-	 * @return: String message to the user.
+	 * @return: String statement of all parameters defining Movie.
 	 */
 	public String toString() {
-		// TODO
+		return super.toString() + " Genre: " + this.genre + " Rating: " + this.rating + 
+				" Directors: " + this.directors + " Cast: " + this.cast;
 	}
 }

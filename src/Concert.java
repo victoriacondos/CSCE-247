@@ -13,7 +13,8 @@ public class Concert extends Event {
 	 * @param explicitContent: boolean determining whether the concert is mature(true) or for all ages(false)
 	 * @param artists: the artists, or performers/producers, within the concert.
 	 */
-	public Concert(MusicGenre genre, boolean explicitContent, String[] artists) {
+	public Concert(String title, String location, double price, MusicGenre genre, boolean explicitContent, String[] artists) {
+		super(title, location, price);
 		this.genre = genre;
 		this.explicitContent = explicitContent;
 		this.artists = artists;
@@ -69,10 +70,11 @@ public class Concert extends Event {
 
 	/**
 	 * Purpose: sends message displaying attributes of Concert when called.
-	 * @return string to user.
+	 * @return String statement of parameters from Concert.
 	 */
 	public String toString() {
-		// TODO
+		return super.toString() + " Genre: " + this.genre + " Explicit Content: " + 
+				this.explicitContent + "Artists: " + this.artists;
 	}
 	
 }
