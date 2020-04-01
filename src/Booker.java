@@ -3,15 +3,13 @@
  * Purpose: Facilitates selling of tickets and transactions between inventory.
  */
 public class Booker extends Ticket {
-
-	
 	/**
 	 * Purpose: default constructor for booker.
 	 * @param event: event connected to ticket.
 	 * @param seat: seat connected to ticket.
 	 */
 	public Booker(Event event, int seat) {
-		super(event, seat);
+		super();
 		// TODO Auto-generated constructor stub ***-> needed for functionality?
 	}
 	
