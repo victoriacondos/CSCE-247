@@ -1,9 +1,18 @@
+/**
+ * @author Brett Logeais
+ * Purpose: user interface to the ticketing system
+ */
+
 import java.util.Scanner;
 
 public class Dialogue {
 	
 	private static Scanner scanner = new Scanner(System.in);
 	
+	/**
+	 * Purpose: shows user account options
+	 * @return Command: whichever command the user enters
+	 */
 	public static Command welcome() {
 		System.out.println("Welcome to TicketPlante\n\n"
 				+ "Please enter:\n"
@@ -25,6 +34,10 @@ public class Dialogue {
 		}
 	}
 	
+	/**
+	 * Purpose: allows user to chose what to do in app
+	 * @return Command: whichever command the user enters
+	 */
 	public static Command mainMenu() {
 		System.out.println("Hello " + UserInterface.user.getUsername() + "\n\n"
 				+ "Please enter:\n"
@@ -40,7 +53,11 @@ public class Dialogue {
 	}
 	
 	
-	
+	/**
+	 * Purpose: checks user input for invalid input
+	 * @param numCommands: user input
+	 * @return command: the number of command the user enters
+	 */
 	public static int getUserCommand(int numCommands) {
 		String input;
 		int command = -1;
