@@ -2,7 +2,7 @@
  * @author Elizabeth Stevenson
  * Purpose: to create the different types of events
  */
-public class Event extends Seating{
+public class Event {
 	protected String title;
 	protected String location;
 	protected double time;
@@ -16,7 +16,6 @@ public class Event extends Seating{
 	 * @param time: time of event
 	 */
 	public Event(String title, String location, double time) {
-		super(); //Seating constructor
 		this.title = title;
 		this.location = location;
 		this.time = time;
@@ -35,7 +34,7 @@ public class Event extends Seating{
 				" Location: " + this.location + 
 				" Time: " + this.time +
 				" Price: " + this.price +
-				" Seating: " + super.toString();
+				" Seating: " + this.seating;
 	}
 }
 
