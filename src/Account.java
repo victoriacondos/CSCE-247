@@ -29,6 +29,12 @@ public class Account {
 		this.securityAnswer = secAnswer;
 	}
 	
+	public Account(Account account) {
+		this.username = account.getUsername();
+		this.password = account.getPassword();
+		this.securityAnswer = account.getSecurityAnswer();
+	}
+
 	/**
 	 * Purpose: accessor for username
 	 * @return username: username of an account
