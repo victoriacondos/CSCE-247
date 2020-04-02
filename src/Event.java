@@ -1,6 +1,7 @@
 /**
  * @author Elizabeth Stevenson
  * Purpose: to create the different types of events
+ * Im making sure im giting stuff right
  */
 public class Event {
 	protected String title;
