@@ -20,6 +20,7 @@ public class Booker extends Ticket {
 	 */
 	public Ticket[] BuyTickets(Event event, int[] seats) {
 		// TODO 
+		return null;
 	}
 	
 	/**

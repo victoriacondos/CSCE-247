@@ -7,7 +7,7 @@ public class LogInCommand implements Command {
 	 * Purpose: saves user input and logs into the specific account
 	 */
 	public void execute() {
-		Account accountToLogIn = Dialogue.logIn();
+		Account accountToLogIn = Dialogue.getLogIn();
 		Account accountLoggedIn = RewardsAccountDatabase.logIn(accountToLogIn);
 		if (accountLoggedIn == null) accountLoggedIn = ManagerAccountDatabase.logIn(accountToLogIn);
 		if (accountLoggedIn != null) {
