@@ -33,14 +33,6 @@ public abstract class Ticket {
 	}
 	
 	/**
-	 * Purpose: sets the cost of the ticket
-	 * @param cost: double value of ticket price
-	 */
-	public void setCost(double cost) { //TODO- do we even need this?
-		this.cost = cost;
-	}
-	
-	/**
 	 * Purpose: returns a string of all the ticket's variables
 	 * @return String statement of all of the ticket's information
 	 */
