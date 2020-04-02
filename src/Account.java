@@ -15,6 +15,12 @@ public class Account {
 		this.securityAnswer = secAnswer;
 	}
 	
+	public Account(Account account) {
+		this.username = account.getUsername();
+		this.password = account.getPassword();
+		this.securityAnswer = account.getSecurityAnswer();
+	}
+	
 	public String getUsername() {
 		return this.username;
 	}

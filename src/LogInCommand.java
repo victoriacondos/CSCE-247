@@ -3,6 +3,7 @@ public class LogInCommand implements Command {
 	public void execute() {
 		Account accountToLogIn = Dialogue.logIn();
 		Account accountLoggedIn = RewardsAccountDatabase.logIn(accountToLogIn);
+		if (accountLoggedIn == null) accountLoggedIn = ManagerAccountDatabase.logIn(accountToLogIn);
 		if (accountLoggedIn != null) {
 			System.out.println("\n----------\n"
 					+ "Logging in\n"

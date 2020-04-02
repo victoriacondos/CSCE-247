@@ -6,6 +6,10 @@ public class RewardsAccount extends Account {
 		super(username, password, secAnswer);
 		setRewardsPoints(points);
 	}
+	public RewardsAccount(Account account) {
+		super(account);
+		setRewardsPoints(0);
+	}
 	
 	public double getRewardsPoints() {
 		return this.rewardsPoints;
