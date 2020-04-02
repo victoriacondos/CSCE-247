@@ -26,17 +26,31 @@ public class Dialogue {
 	}
 	
 	public static Command mainMenu() {
-		System.out.println("Hello " + UserInterface.user.getUsername() + "\n\n"
-				+ "Please enter:\n"
-				+ "\t1) to Find Columbia Events\n"
-				+ "\t2) to View Inventory\n"
-				+ "\t0) to Log Out");
-		int option = getUserCommand(2);
-		if (option == 0) return new LogOutCommand();
-		if (option == 1) return null;
-		else {
-			return null;
+		if (UserInterface.user instanceof ManagerAccount) {
+			System.out.println("Hello Manager " + UserInterface.user.getUsername() + "\n\n"
+					+ "Please enter:\n"
+					+ "\t1) to Add an Event\n"
+					+ "\t2) to Edit an Event\n"
+					+ "\t3) to Remove an Event\n"
+					+ "\t0) to Log Out");
+			int option = getUserCommand(3);
+			if (option == 0) return new LogOutCommand();
+			if (option == 1) return null;
+			
+		} else {
+			System.out.println("Hello " + UserInterface.user.getUsername() + "\n\n"
+					+ "Please enter:\n"
+					+ "\t1) to Find Columbia Events\n"
+					+ "\t2) to View Inventory\n"
+					+ "\t0) to Log Out");
+			int option = getUserCommand(2);
+			if (option == 0) return new LogOutCommand();
+			if (option == 1) return null;
+			else {
+				return null;
+			}
 		}
+		return null;
 	}
 	
 	
@@ -57,7 +71,7 @@ public class Dialogue {
 	
 	
 	
-	public static Account logIn() {
+	public static Account getLogIn() {
 		System.out.println("Username:");
 		String username = scanner.nextLine();
 		System.out.println("Password:");
