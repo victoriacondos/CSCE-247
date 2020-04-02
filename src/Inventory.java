@@ -38,8 +38,12 @@ public class Inventory {
 		this.rewardsPoints = rewardsPoints;
 	}
 
-	//TODO what are we saying here?
+
+	/**
+	 * Purpose: to show how many tickets were purchased and how many rewards points have
+	 * @return String with purchasedTickets value and rewards points
+	 */
 	public String toString() {
-		return "something"; 
+		return "Purchased Tickets" + this.purchasedTickets + " Rewards Points: " + this.rewardsPoints; 
 	}
 }
