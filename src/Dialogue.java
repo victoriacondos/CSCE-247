@@ -72,8 +72,10 @@ public class Dialogue {
 		return command;
 	}
 	
-	
-	
+	/**
+	 * Purpose: makes account with username and password
+	 * @return account: a new user account
+	 */
 	public static Account logIn() {
 		System.out.println("Username:");
 		String username = scanner.nextLine();
@@ -82,6 +84,10 @@ public class Dialogue {
 		return new Account(username, password);
 	}
 	
+	/**
+	 * Purpose: asks user if they are a manager
+	 * @return response: yes or no if a person is a manager
+	 */
 	public static boolean signUp() {
 		System.out.println("Is this a Manager Account?\n\nEnter y if yes, enter if no\n");
 		String response = scanner.nextLine();
