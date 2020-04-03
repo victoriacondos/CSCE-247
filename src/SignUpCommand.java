@@ -3,15 +3,14 @@ public class SignUpCommand implements Command {
 	public void execute() {
 		boolean signedUp = false;
 		boolean isManager = Dialogue.signUp();
-
+		Account accountToSignUp;
 		while (!signedUp) {
 			if (isManager) {
-				ManagerAccount accountToSignUp = new ManagerAccount(Dialogue.getLogIn());
-				signedUp = ManagerAccountDatabase.signUp(accountToSignUp);
+				accountToSignUp = new ManagerAccount(Dialogue.getLogIn());
 			} else {
-				RewardsAccount accountToSignUp = new RewardsAccount(Dialogue.getLogIn());
-				signedUp = RewardsAccountDatabase.signUp(accountToSignUp);
+				accountToSignUp = new RewardsAccount(Dialogue.getLogIn(), 0);
 			}
+			signedUp = SystemDatabase.signUp(accountToSignUp);
 			if (!signedUp) System.out.println("\tTHAT USERNAME IS TAKEN");
 		}
 		System.out.println("\n\t----------------\n"
