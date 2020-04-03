@@ -1,14 +1,27 @@
+import org.json.simple.JSONObject;
+
 /**
  * @author Brett Logeais
  * Purpose: to create a user account with a username, password, and security answer to a security question
  */
-public class Account {
+public class Account extends DatabaseObject {
+	protected static final String USER = "username";
+	protected static final String PASS = "password";
+	protected static final String ANS = "securityAnswer";
+	
 	private String username;
 	private String password;
 	private String securityAnswer;
 	
+	
+	public Account(JSONObject objectJSON) {
+		this.username = (String)objectJSON.get(USER);
+		this.password = (String)objectJSON.get(PASS);
+		this.securityAnswer = (String)objectJSON.get(ANS);
+	}
+	
 	/**
-	 * Purpose: the create a new account with only a username and password
+	 * Purpose: to create a new account with only a username and password
 	 * @param username: username of an account
 	 * @param password: password of an account
 	 */
@@ -35,27 +48,24 @@ public class Account {
 		this.securityAnswer = account.getSecurityAnswer();
 	}
 
-	/**
-	 * Purpose: accessor for username
-	 * @return username: username of an account
-	 */
 	public String getUsername() {
 		return this.username;
 	}
 	
-	/**
-	 * Purpose: accessor for password
-	 * @return password: password of an account
-	 */
 	public String getPassword() {
 		return this.password;
 	}
 	
-	/**
-	 * Purpose: accessor for security answer
-	 * @return securityAnswer: security answer for an account's security question
-	 */
 	public String getSecurityAnswer() {
 		return this.securityAnswer;
+	}
+	
+	@Override
+	public JSONObject toJSON() {
+		JSONObject accountDetails = new JSONObject();
+		accountDetails.put(USER, this.getUsername());
+		accountDetails.put(PASS, this.getPassword());
+		accountDetails.put(ANS, this.getSecurityAnswer());
+		return accountDetails;
 	}
 }

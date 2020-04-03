@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class UserInterface {
 	
+	public static SystemDatabase system;
 	public static Account user;
 	private Dialogue dialogue;
 	private static String menu;
@@ -10,17 +11,17 @@ public class UserInterface {
 	public UserInterface() {
 		dialogue = new Dialogue();
 		menu = menuOptions[0];
+		system = new SystemDatabase();
 	}
-	
 	
 	public void run() {
 		Command command = null;
 		while (true) {
-			if (menu == "Main Menu") command = Dialogue.mainMenu();
-			else if (menu == "Welcome") command = Dialogue.welcome();
+			if (menu == menuOptions[1]) command = Dialogue.mainMenu();
+			else if (menu == menuOptions[0]) command = Dialogue.welcome();
 			
 			if (command != null) command.execute();
-			else if (menu == "Welcome") return;
+			else if (menu == menuOptions[0]) return;
 		}
 	}
 	
