@@ -3,12 +3,16 @@ import java.util.ArrayList;
 public class SystemDatabase {
 	public static Database rewards;
 	public static Database managers;
-	public static Database events;
+	public static Database movies;
+	public static Database concerts;
+	public static Database plays;
 	
 	public SystemDatabase() {
 		rewards = new Database("src/accountsRewards.json");
 		managers = new Database("src/accountsManager.json");
-		events = new Database("src/events.json");
+		movies = new Database("src/eventsMovie.json");
+		concerts = new Database("src/eventsConcert.json");
+		plays = new Database("src/eventsTheatre.json");
 	}
 	
 	public static Account logIn(Account accountToLogIn) {

@@ -57,20 +57,29 @@ public class Database {
 			object = new RewardsAccount(objectJSON);
 		} else if (this.fileName.equals("src/accountsManager.json")) {
 			object = new ManagerAccount(objectJSON);
-		} else if (this.fileName.equals("src/events.json")){
-			object = new Event(objectJSON);
+		} else if (this.fileName.equals("src/eventsMovie.json")){
+			object = new Movie(objectJSON);
+		} else if (this.fileName.equals("src/eventsConcert.json")){
+			object = new Concert(objectJSON);
+		} else if (this.fileName.equals("src/eventsTheatre.json")) {
+			object = new Theatre(objectJSON);
 		} else {
 			object = null;
 		}
 		return object;
 	}
+	
 	public ArrayList<DatabaseObject> getList() {
 		return objectList;
 	}
 	
-	public void printDatabase() {
+	public int printDatabase(int start) {
+		int count = start;
 		for (int i = 0; i < this.objectList.size(); i++) {
-			System.out.println(i + ")\n" + objectList.get(i) + "\n\n");
+			System.out.println((start+i) + ")\n" + objectList.get(i) + "\n\n");
+			count++;
 		}
+		return count;
+		
 	}
 }

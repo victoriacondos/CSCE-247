@@ -57,8 +57,7 @@ public class Event extends DatabaseObject {
 		return "   Title: " + this.title +
 				"\n     Location: " + this.location + 
 				"\n     Time: " + this.time +
-				"\n     Price: $" + this.price +
-				"\n     Seating: " + this.seating;
+				"\n     Price: $" + this.price;
 	}
 	
 	@Override
