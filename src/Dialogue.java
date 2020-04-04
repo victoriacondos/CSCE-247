@@ -10,8 +10,8 @@ public class Dialogue {
 	private static Scanner scanner = new Scanner(System.in);
 	
 	/**
-	 * Purpose: shows user account options
-	 * @return Command: whichever command the user enters
+	 * Purpose: shows login options
+	 * @return Command: user-selected command
 	 */
 	public static Command welcome() {
 		System.out.println("Welcome to TicketPlante\n\n"
@@ -35,8 +35,8 @@ public class Dialogue {
 	}
 	
 	/**
-	 * Purpose: allows user to chose what to do in app
-	 * @return Command: whichever command the user enters
+	 * Purpose: shows main menu options
+	 * @return Command: user-selected command
 	 */
 	public static Command mainMenu() {
 		if (UserInterface.user instanceof ManagerAccount) {
@@ -58,7 +58,7 @@ public class Dialogue {
 					+ "\t0) to Log Out");
 			int option = getUserCommand(2);
 			if (option == 0) return new LogOutCommand();
-			if (option == 1) return null;
+			if (option == 1) return new ListEventsCommand();
 			else {
 				return null;
 			}
@@ -68,9 +68,9 @@ public class Dialogue {
 	
 	
 	/**
-	 * Purpose: checks user input for invalid input
-	 * @param numCommands: user input
-	 * @return command: the number of command the user enters
+	 * Purpose: gets user input and checks for validity
+	 * @param numCommands: number of commands available
+	 * @return command: corrected user input
 	 */
 	public static int getUserCommand(int numCommands) {
 		String input;

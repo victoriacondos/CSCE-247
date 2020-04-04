@@ -15,8 +15,8 @@ public class Movie extends Event {
 	 * @param directors: The directors who helped film the movie.
 	 * @param cast: actors that performed within the movie.
 	 */
-	public Movie(String title, String location, double price, MovieGenre genre, MpaRating rating, String[] directors, String[] cast) {
-		super(title, location, price);
+	public Movie(String title, String location, String time, double price, MovieGenre genre, MpaRating rating, String[] directors, String[] cast) {
+		super(title, location, time, price);
 		this.genre = genre;
 		this.rating = rating;
 		this.directors = directors;

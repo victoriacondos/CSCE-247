@@ -8,6 +8,7 @@ public class SystemDatabase {
 	public SystemDatabase() {
 		rewards = new Database("src/accountsRewards.json");
 		managers = new Database("src/accountsManager.json");
+		events = new Database("src/events.json");
 	}
 	
 	public static Account logIn(Account accountToLogIn) {

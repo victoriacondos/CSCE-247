@@ -9,16 +9,16 @@ public class UserInterface {
 	private static String[] menuOptions = {"Welcome", "Main Menu", "Find Events", "View Inventory", "Checkout"};
 	
 	public UserInterface() {
-		dialogue = new Dialogue();
-		menu = menuOptions[0];
 		system = new SystemDatabase();
+		menu = menuOptions[0];
+		dialogue = new Dialogue();
 	}
 	
 	public void run() {
 		Command command = null;
 		while (true) {
-			if (menu == menuOptions[1]) command = Dialogue.mainMenu();
-			else if (menu == menuOptions[0]) command = Dialogue.welcome();
+			if (menu == menuOptions[0]) command = Dialogue.welcome();
+			else if (menu == menuOptions[1]) command = Dialogue.mainMenu();
 			
 			if (command != null) command.execute();
 			else if (menu == menuOptions[0]) return;

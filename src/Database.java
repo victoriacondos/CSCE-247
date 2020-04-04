@@ -57,6 +57,8 @@ public class Database {
 			object = new RewardsAccount(objectJSON);
 		} else if (this.fileName.equals("src/accountsManager.json")) {
 			object = new ManagerAccount(objectJSON);
+		} else if (this.fileName.equals("src/events.json")){
+			object = new Event(objectJSON);
 		} else {
 			object = null;
 		}
@@ -64,5 +66,11 @@ public class Database {
 	}
 	public ArrayList<DatabaseObject> getList() {
 		return objectList;
+	}
+	
+	public void printDatabase() {
+		for (int i = 0; i < this.objectList.size(); i++) {
+			System.out.println(i + ")\n" + objectList.get(i) + "\n\n");
+		}
 	}
 }

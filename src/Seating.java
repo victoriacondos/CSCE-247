@@ -1,12 +1,36 @@
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
 /**
  * @author Elizabeth Stevenson
  * Purpose: holds the seating information
  */
-public class Seating {
+public class Seating extends DatabaseObject {
+	private static final String SEATS = "seats";
+	private static final String ROW = "rowLength";
+	private static final String HANDI = "handicap";
+	
 	private boolean seats[];
 	private int rowLength;
 	private boolean soldOut;
 	private int handicapSeats[];
+	
+	public Seating(JSONObject objectJSON) {
+		JSONArray arrayJSON = (JSONArray)objectJSON.get(SEATS);
+		boolean[] array = new boolean[arrayJSON.size()];	
+		for (int i = 0; i < array.length; i++) {
+			array[i] = (boolean)arrayJSON.get(i);
+		}
+		this.seats = array;
+		
+		this.rowLength = (int)(long)objectJSON.get(ROW);
+		
+		arrayJSON = (JSONArray)objectJSON.get(HANDI);
+		int[] array2 = new int[arrayJSON.size()];	
+		for (int i = 0; i < array2.length; i++) {
+			array2[i] = (int)arrayJSON.get(i);
+		}
+		this.handicapSeats = array2;
+	}
 	
 	public Seating(int numOfSeats, int rowLength, int[] handicapped) {
 		this.seats = new boolean[numOfSeats];
@@ -54,6 +78,22 @@ public class Seating {
 		return false;
 	}
 	
+	public JSONObject toJSON() {
+		JSONObject seatingDetails = new JSONObject();
+		JSONArray array = new JSONArray();
+		for (int i = 0; i < this.seats.length; i++) {
+			array.add(this.seats[i]);
+		}
+		seatingDetails.put(SEATS, array);
+		seatingDetails.put(ROW, this.rowLength);
+		array = new JSONArray();
+		for (int i = 0; i < this.handicapSeats.length; i++) {
+			array.add(this.seats[i]);
+		}
+		seatingDetails.put(HANDI, array);
+		return seatingDetails;
+	}
+	
 	/**
 	 * Purpose: to convert seating data to a viewable format
 	 * o = available
@@ -62,7 +102,7 @@ public class Seating {
 	 * @return a seating chart
 	 */
 	public String toString() {
-		String seating = "\t";
+		String seating = "\n\t";
 		if (soldOut) seating += "SOLD OUT";
 		else {
 			seating += "Seat in Row\t";

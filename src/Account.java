@@ -63,9 +63,9 @@ public class Account extends DatabaseObject {
 	@Override
 	public JSONObject toJSON() {
 		JSONObject accountDetails = new JSONObject();
-		accountDetails.put(USER, this.getUsername());
-		accountDetails.put(PASS, this.getPassword());
-		accountDetails.put(ANS, this.getSecurityAnswer());
+		accountDetails.put(USER, this.username);
+		accountDetails.put(PASS, this.password);
+		accountDetails.put(ANS, this.securityAnswer);
 		return accountDetails;
 	}
 }
