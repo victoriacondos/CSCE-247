@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -11,21 +12,21 @@ public class Theatre extends Event {
 	private static final String CAST = "cast";
 	
 	private TheatreGenre genre;
-	private String[] directors;
-	private String[] cast;
+	private ArrayList<String> directors;
+	private ArrayList<String> cast;
 	
 	public Theatre(JSONObject objectJSON) {
 		super(objectJSON);
 		this.genre = (TheatreGenre)objectJSON.get(GENRE);
 		
 		JSONArray arrayJSON = (JSONArray)objectJSON.get(DIRECTORS);
-		String[] array = new String[arrayJSON.size()];	
-		for (int i = 0; i < array.length; i++) array[i] = (String)arrayJSON.get(i);
+		ArrayList<String> array = new ArrayList<String>();
+		for (int i = 0; i < arrayJSON.size(); i++) array.add((String)arrayJSON.get(i));
 		this.directors = array;
 		
 		arrayJSON = (JSONArray)objectJSON.get(CAST);
-		String[] array2 = new String[arrayJSON.size()];	
-		for (int i = 0; i < array2.length; i++) array2[i] = (String)arrayJSON.get(i);
+		array = new ArrayList<String>();
+		for (int i = 0; i < arrayJSON.size(); i++) array.add((String)arrayJSON.get(i));
 		this.cast = array;
 	}
 	
@@ -35,7 +36,7 @@ public class Theatre extends Event {
 	 * @param directors: the people who directed the production of the threatre show.
 	 * @param cast: actors within the theatre show.
 	 */
-	public Theatre(String title, String location, String time, double price, TheatreGenre genre, String[] directors, String[] cast) {
+	public Theatre(String title, String location, String time, double price, TheatreGenre genre, ArrayList<String> directors, ArrayList<String> cast) {
 		super(title, location, time, price);
 		this.genre = genre;
 		this.directors = directors;
@@ -54,7 +55,7 @@ public class Theatre extends Event {
 	 * Purpose: Accessor for directors.
 	 * @return: this Theatre's directors
 	 */
-	public String[] getDirectors() {
+	public ArrayList<String> getDirectors() {
 		return directors;
 	}
 
@@ -62,7 +63,7 @@ public class Theatre extends Event {
 	 * Purpose: Accessor for cast.
 	 * @return: this Theatre's cast
 	 */
-	public String[] getCast() {
+	public ArrayList<String> getCast() {
 		return cast;
 	}
 
@@ -78,7 +79,7 @@ public class Theatre extends Event {
 	 * Purpose: Mutator for directors.
 	 * @param directors: values of directors.
 	 */
-	public void setDirectors(String[] directors) {
+	public void setDirectors(ArrayList<String> directors) {
 		this.directors = directors;
 	}
 
@@ -86,7 +87,7 @@ public class Theatre extends Event {
 	 * Purpose: Mutator for cast.
 	 * @param values of cast members.
 	 */
-	public void setCast(String[] cast) {
+	public void setCast(ArrayList<String> cast) {
 		this.cast = cast;
 	}
 
@@ -95,11 +96,11 @@ public class Theatre extends Event {
 		movieDetails.put(GENRE, this.genre);
 		
 		JSONArray array = new JSONArray();
-		for (int i = 0; i < this.directors.length; i++) array.add(this.directors[i]);
+		for (int i = 0; i < this.directors.size(); i++) array.add(this.directors.get(i));
 		movieDetails.put(DIRECTORS, array);
 		
 		array = new JSONArray();
-		for (int i = 0; i < this.cast.length; i++) array.add(this.cast[i]);
+		for (int i = 0; i < this.cast.size(); i++) array.add(this.cast.get(i));
 		movieDetails.put(CAST, array);
 		
 		return movieDetails;

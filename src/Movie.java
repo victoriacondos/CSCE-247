@@ -1,4 +1,7 @@
 import org.json.simple.JSONObject;
+
+import java.util.ArrayList;
+
 import org.json.simple.JSONArray;
 
 /**
@@ -13,8 +16,8 @@ public class Movie extends Event {
 	
 	private MovieGenre genre;
 	private MpaRating rating;
-	private String[] directors;
-	private String[] cast;
+	private ArrayList<String> directors;
+	private ArrayList<String> cast;
 	
 	public Movie(JSONObject objectJSON) {
 		super(objectJSON);
@@ -22,13 +25,13 @@ public class Movie extends Event {
 		this.rating = (MpaRating)objectJSON.get(MPA);
 		
 		JSONArray arrayJSON = (JSONArray)objectJSON.get(DIRECTORS);
-		String[] array = new String[arrayJSON.size()];	
-		for (int i = 0; i < array.length; i++) array[i] = (String)arrayJSON.get(i);
+		ArrayList<String> array = new ArrayList<String>();
+		for (int i = 0; i < arrayJSON.size(); i++) array.add((String)arrayJSON.get(i));
 		this.directors = array;
 		
 		arrayJSON = (JSONArray)objectJSON.get(CAST);
-		String[] array2 = new String[arrayJSON.size()];	
-		for (int i = 0; i < array2.length; i++) array2[i] = (String)arrayJSON.get(i);
+		array = new ArrayList<String>();
+		for (int i = 0; i < arrayJSON.size(); i++) array.add((String)arrayJSON.get(i));
 		this.cast = array;
 	}
 	
@@ -39,7 +42,7 @@ public class Movie extends Event {
 	 * @param directors: The directors who helped film the movie.
 	 * @param cast: actors that performed within the movie.
 	 */
-	public Movie(String title, String location, String time, double price, MovieGenre genre, MpaRating rating, String[] directors, String[] cast) {
+	public Movie(String title, String location, String time, double price, MovieGenre genre, MpaRating rating, ArrayList<String> directors, ArrayList<String> cast) {
 		super(title, location, time, price);
 		this.genre = genre;
 		this.rating = rating;
@@ -67,7 +70,7 @@ public class Movie extends Event {
 	 * Purpose: Accessor for directors
 	 * @return directors of movie
 	 */
-	public String[] getDirectors() {
+	public ArrayList<String> getDirectors() {
 		return directors;
 	}
 
@@ -75,7 +78,7 @@ public class Movie extends Event {
 	 * Purpose: Accessor for cast
 	 * @return: cast of movie
 	 */
-	public String[] getCast() {
+	public ArrayList<String> getCast() {
 		return cast;
 	}
 
@@ -99,7 +102,7 @@ public class Movie extends Event {
 	 * Purpose: Mutator for directors
 	 * @param directors: directors of the movie
 	 */
-	public void setDirectors(String[] directors) {
+	public void setDirectors(ArrayList<String> directors) {
 		this.directors = directors;
 	}
 
@@ -107,7 +110,7 @@ public class Movie extends Event {
 	 * Purpose: Mutator for cast
 	 * @param cast: cast of the movie
 	 */
-	public void setCast(String[] cast) {
+	public void setCast(ArrayList<String> cast) {
 		this.cast = cast;
 	}
 	
@@ -117,11 +120,11 @@ public class Movie extends Event {
 		movieDetails.put(MPA, this.rating);
 		
 		JSONArray array = new JSONArray();
-		for (int i = 0; i < this.directors.length; i++) array.add(this.directors[i]);
+		for (int i = 0; i < this.directors.size(); i++) array.add(this.directors.get(i));
 		movieDetails.put(DIRECTORS, array);
 		
 		array = new JSONArray();
-		for (int i = 0; i < this.cast.length; i++) array.add(this.cast[i]);
+		for (int i = 0; i < this.cast.size(); i++) array.add(this.cast.get(i));
 		movieDetails.put(CAST, array);
 		
 		return movieDetails;

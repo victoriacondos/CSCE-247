@@ -21,13 +21,11 @@ public class UserInterface {
 			else if (menu == menuOptions[1]) command = Dialogue.mainMenu();
 			
 			if (command != null) command.execute();
-			else if (menu == menuOptions[0]) return;
+			else if (menu == menuOptions[0])  {
+				system.save();
+				return;
+			}
 		}
-	}
-	
-	private static Command findEvents() {
-		System.out.println("Here's some events dawg");
-		return new LogInCommand();
 	}
 	
 	public static void setMenu(int option) {
