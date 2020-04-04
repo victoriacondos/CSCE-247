@@ -1,8 +1,14 @@
-
+/**
+ * @author Brett Logeais
+ * Purpose: works out the user login sequence
+ */
 public class LogInCommand implements Command {
+	/**
+	 * Purpose: saves user input and logs into the specific account
+	 */
 	public void execute() {
-		Account accountToLogIn = Dialogue.logIn();
-		Account accountLoggedIn = RewardsAccountDatabase.logIn(accountToLogIn);
+		Account accountToLogIn = Dialogue.getLogIn();
+		Account accountLoggedIn = SystemDatabase.logIn(accountToLogIn);
 		if (accountLoggedIn != null) {
 			System.out.println("\n----------\n"
 					+ "Logging in\n"

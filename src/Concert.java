@@ -1,11 +1,30 @@
+import java.util.ArrayList;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 /**
  * @author Elijah Dawkins
  * Purpose: type of event used for the majority of the purchases in the app.
  */
 public class Concert extends Event {
+	private static final String GENRE = "genre";
+	private static final String EXPLICIT = "explicitContent";
+	private static final String ARTISTS = "artists";
+	
 	private MusicGenre genre;
 	private boolean explicitContent;
-	private String[] artists;
+	private ArrayList<String> artists;
+	
+	public Concert(JSONObject objectJSON) {
+		super(objectJSON);
+		this.genre = (MusicGenre)objectJSON.get(GENRE);
+		this.explicitContent = (boolean)objectJSON.get(EXPLICIT);
+		JSONArray arrayJSON = (JSONArray)objectJSON.get(ARTISTS);
+		ArrayList<String> array = new ArrayList<String>();
+		for (int i = 0; i < arrayJSON.size(); i++) array.add((String)arrayJSON.get(i));
+		this.artists = array;
+	}
 	
 	/**
 	 * Purpose: default constructor for Concert parameters.
@@ -13,7 +32,8 @@ public class Concert extends Event {
 	 * @param explicitContent: boolean determining whether the concert is mature(true) or for all ages(false)
 	 * @param artists: the artists, or performers/producers, within the concert.
 	 */
-	public Concert(MusicGenre genre, boolean explicitContent, String[] artists) {
+	public Concert(String title, String location, String time, double price, MusicGenre genre, boolean explicitContent, ArrayList<String> artists) {
+		super(title, location, time, price);
 		this.genre = genre;
 		this.explicitContent = explicitContent;
 		this.artists = artists;
@@ -39,7 +59,7 @@ public class Concert extends Event {
 	 * Purpose: Accessor for artists
 	 * @return: artists attending the concert
 	 */
-	public String[] getArtists() {
+	public ArrayList<String> getArtists() {
 		return artists;
 	}
 
@@ -63,16 +83,29 @@ public class Concert extends Event {
 	 * Purpose: Mutator for artists
 	 * @param artists: artists attending concert
 	 */
-	public void setArtists(String[] artists) {
+	public void setArtists(ArrayList<String> artists) {
 		this.artists = artists;
 	}
-
+	
+	public JSONObject toJSON() {
+		JSONObject movieDetails = super.toJSON();
+		movieDetails.put(GENRE, this.genre);
+		movieDetails.put(EXPLICIT, this.explicitContent);
+		
+		JSONArray array = new JSONArray();
+		for (int i = 0; i < this.artists.size(); i++) array.add(this.artists.get(i));
+		movieDetails.put(ARTISTS, array);
+		
+		return movieDetails;
+	}
+	
 	/**
 	 * Purpose: sends message displaying attributes of Concert when called.
-	 * @return string to user.
+	 * @return String statement of parameters from Concert.
 	 */
 	public String toString() {
-		// TODO
+		return super.toString() + " Genre: " + this.genre + " Explicit Content: " + 
+				this.explicitContent + "Artists: " + this.artists;
 	}
 	
 }
