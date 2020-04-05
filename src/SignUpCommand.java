@@ -8,7 +8,7 @@ public class SignUpCommand implements Command {
 			if (isManager) {
 				accountToSignUp = new ManagerAccount(Dialogue.getLogIn());
 			} else {
-				accountToSignUp = new RewardsAccount(Dialogue.getLogIn(), 0);
+				accountToSignUp = new RewardsAccount(Dialogue.getLogIn(), new Inventory());
 			}
 			signedUp = SystemDatabase.signUp(accountToSignUp);
 			if (!signedUp) System.out.println("\tTHAT USERNAME IS TAKEN");

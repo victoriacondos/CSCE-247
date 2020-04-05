@@ -20,7 +20,23 @@ public class ListEventsCommand implements Command {
 			if (response < concertStart) event = (Event)UserInterface.system.movies.getList().get(response-movieStart);
 			else if (response < playStart) event = (Event)UserInterface.system.concerts.getList().get(response-concertStart);
 			else if (response < totalCount) event = (Event)UserInterface.system.plays.getList().get(response-playStart);
-			System.out.println("\n\n" + event);
+			System.out.println("\n\n" + event + "\n"
+					+ "Enter:\n"
+					+ "\t1) to Buy Tickets\n"
+					+ "\t2) to View User Reviews\n"
+					+ "\t3) to Leave a Review\n"
+					+ "\t0) to Go Back");
+			int option = Dialogue.getUserCommand(3);
+			if (option == 1) {
+				System.out.println("How many tickets? (No more than 20)");
+				option = Dialogue.getUserCommand(20);
+				Booker booker = new Booker(UserInterface.user.getInventory(), event);
+				booker.BuyTickets(option);
+				System.out.println("\t\t*******************\n"
+						+ "\t\tWaiting Transaction\n"
+						+ "\t\t*******************\n"
+						+ "You can find your ticket(s) in your Inventory");
+			}
 		}
 		
 	}

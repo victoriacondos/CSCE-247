@@ -60,9 +60,7 @@ public class Dialogue {
 			int option = getUserCommand(2);
 			if (option == 0) return new LogOutCommand();
 			if (option == 1) return new ListEventsCommand();
-			else {
-				return null;
-			}
+			else return new ViewInventoryCommand();
 		}
 		return null;
 	}
