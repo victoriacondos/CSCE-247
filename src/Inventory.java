@@ -1,10 +1,12 @@
 /**
- * @author Elizabeth Stevenson
+ * @author Elizabeth Stevenson, Victoria Condos
  * Purpose: to check which tickets have been purchased and deal with rewards
- */
+ */import java.io.*; //TODO - change this to only be things used probably
 public class Inventory {
 	private Ticket[] purchasedTickets;
 	private double rewardsPoints;
+	private final String astericksLong = "**************************************************";
+	private final String astericksShort = "****"
 
 	/**
 	 * Purpose: to get purchased ticket information
@@ -38,12 +40,21 @@ public class Inventory {
 		this.rewardsPoints = rewardsPoints;
 	}
 
-
 	/**
-	 * Purpose: to show how many tickets were purchased and how many rewards points have
-	 * @return String with purchasedTickets value and rewards points
+	 * Purpose: creates .txt file of each of purchased tickets []
 	 */
-	public String toString() {
-		return "Purchased Tickets" + this.purchasedTickets + " Rewards Points: " + this.rewardsPoints; 
+	public void TicketWriter(String ticketName) throws IOException {
+		BufferedWriter outputWriter = new BufferedWriter (new FileWriter (ticketName));
+		
+		for (Ticket ticket : purchasedTickets) {
+			outputWriter.write(astericksLong);
+			outputWriter.newLine();
+			outputWriter.write(astericksShort + ticket.toString() + astericksShort);
+			outputWriter.newLine();
+			outputWriter.write(astericksLong);
+		
+			outputWriter.flush();
+			outputWriter.close();
+		}
 	}
 }
