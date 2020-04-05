@@ -51,7 +51,7 @@ public class Booker {
 			tickets.add(ticket);
 			cost += this.event.price;
 		}
-		System.out.println("Total COST: " + cost);
+		System.out.println("Total Cost: " + cost + "\n You recieved " + (cost/10) + " Rewards Points");
 		this.inventory.getPurchasedTickets().addAll(tickets);
 	}
 	

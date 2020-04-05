@@ -37,9 +37,9 @@ public class ListEventsCommand implements Command {
 				option = Dialogue.getUserCommand(20);
 				Booker booker = new Booker(UserInterface.user.getInventory(), event);
 				booker.BuyTickets(option, time);
-				System.out.println("\t\t*******************\n"
-						+ "\t\tWaiting Transaction\n"
-						+ "\t\t*******************\n"
+				System.out.println("\t\t********************\n"
+						+ "\t\tPurchasing Ticket(s)\n"
+						+ "\t\t********************\n"
 						+ "You can find your ticket(s) in your Inventory");
 			} else if (option == 2) {
 				event.printReviews();

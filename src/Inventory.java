@@ -64,7 +64,7 @@ public class Inventory extends DatabaseObject {
 		JSONObject inventoryDetails = new JSONObject();
 		inventoryDetails.put(POINTS, this.rewardsPoints);
 		JSONArray array = new JSONArray();
-		for (int i = 0; i < this.purchasedTickets.size(); i++) array.add(purchasedTickets.get(i));
+		for (int i = 0; i < this.purchasedTickets.size(); i++) array.add(purchasedTickets.get(i).toJSON());
 		inventoryDetails.put(TICKETS, array);
 		return inventoryDetails;
 	}

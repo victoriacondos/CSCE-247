@@ -17,7 +17,8 @@ public class Ticket extends DatabaseObject{
 	protected double cost;
 	
 	public Ticket(JSONObject objectJSON) {
-		this.seat = (int)objectJSON.get(SEAT);
+		this.time = (String)objectJSON.get(TIME);
+		this.seat = (int)(long)objectJSON.get(SEAT);
 		this.cost = (double)objectJSON.get(COST);
 		this.event = new Event((JSONObject)objectJSON.get(EVENT));
 	}
