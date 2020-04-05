@@ -21,8 +21,8 @@ public class Movie extends Event {
 	
 	public Movie(JSONObject objectJSON) {
 		super(objectJSON);
-		this.genre = (MovieGenre)objectJSON.get(GENRE);
-		this.rating = (MpaRating)objectJSON.get(MPA);
+		this.genre = MovieGenre.fromString((String)objectJSON.get(GENRE));
+		this.rating = MpaRating.fromString((String)objectJSON.get(MPA));
 		
 		JSONArray arrayJSON = (JSONArray)objectJSON.get(DIRECTORS);
 		ArrayList<String> array = new ArrayList<String>();
@@ -116,8 +116,8 @@ public class Movie extends Event {
 	
 	public JSONObject toJSON() {
 		JSONObject movieDetails = super.toJSON();
-		movieDetails.put(GENRE, this.genre);
-		movieDetails.put(MPA, this.rating);
+		movieDetails.put(GENRE, this.genre.toString());
+		movieDetails.put(MPA, this.rating.toString());
 		
 		JSONArray array = new JSONArray();
 		for (int i = 0; i < this.directors.size(); i++) array.add(this.directors.get(i));
