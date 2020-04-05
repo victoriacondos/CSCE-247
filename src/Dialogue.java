@@ -44,13 +44,10 @@ public class Dialogue {
 			System.out.println("Hello Manager " + UserInterface.user.getUsername() + "\n\n"
 					+ "Please enter:\n"
 					+ "\t1) to Add an Event\n"
-					+ "\t2) to Edit an Event\n"
-					+ "\t3) to Remove an Event\n"
 					+ "\t0) to Log Out");
-			int option = getUserCommand(3);
+			int option = getUserCommand(1);
 			if (option == 0) return new LogOutCommand();
-			if (option == 1) return new AddEventCommand();
-			
+			else return new AddEventCommand();
 		} else {
 			System.out.println("Hello " + UserInterface.user.getUsername() + "\n\n"
 					+ "Please enter:\n"
@@ -62,7 +59,6 @@ public class Dialogue {
 			if (option == 1) return new ListEventsCommand();
 			else return new ViewInventoryCommand();
 		}
-		return null;
 	}
 	
 	
@@ -105,13 +101,18 @@ public class Dialogue {
 		String title = scanner.nextLine();
 		System.out.println("Event LOCATION:");
 		String location = scanner.nextLine();
-		System.out.println("Event TIME:");
-		String time = scanner.nextLine();
+		System.out.println("List the SHOW TIMES. Enter 0 when done");
+		ArrayList<String> times = new ArrayList<String>();
+		String response = "";
+		while (!response.equals("0")) {
+			response = scanner.nextLine();
+			if (!response.equals("0")) times.add(response);
+		}
 		System.out.println("Event STANDARD TICKET PRICE:");
 		double price = Double.parseDouble(scanner.nextLine());
 		System.out.println("Is this a (C)oncert, (T)heatre, a (M)ovie or (N)one listed?");
 		String type = scanner.nextLine();
-		String response = "";
+		response = "";
 		if (type.equalsIgnoreCase("C")) { 
 			System.out.println("List the ARTISTS. Enter 0 when done");
 			ArrayList<String> artists = new ArrayList<String>();
@@ -123,7 +124,7 @@ public class Dialogue {
 			System.out.println("Explicit content? y or n");
 			response = scanner.nextLine();
 			boolean explicit = response.equalsIgnoreCase("y");
-			event = new Concert(title, location, time, price, genre, explicit, artists);
+			event = new Concert(title, location, times, price, genre, explicit, artists);
 		} else {
 			System.out.println("List the DIRECTORS. Enter 0 when done.");
 			ArrayList<String> directors = new ArrayList<String>();
@@ -140,11 +141,11 @@ public class Dialogue {
 			}
 			if (type.equalsIgnoreCase("T")) {
 				TheatreGenre genre = getGenreTheatre();
-				event = new Theatre(title, location, time, price, genre, directors, cast);
+				event = new Theatre(title, location, times, price, genre, directors, cast);
 			} else {
 				MovieGenre genre = getGenreMovie();
 				MpaRating rating = getMpaRating();
-				event = new Movie(title, location, time, price, genre, rating, directors, cast);
+				event = new Movie(title, location, times, price, genre, rating, directors, cast);
 			}
 			
 		}

@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class ListEventsCommand implements Command {
 	public void execute() {
@@ -28,15 +29,33 @@ public class ListEventsCommand implements Command {
 					+ "\t0) to Go Back");
 			int option = Dialogue.getUserCommand(3);
 			if (option == 1) {
+				System.out.println("What Show Time?");
+				int options = event.printShowTimes();
+				option = Dialogue.getUserCommand(options);
+				String time = event.showTimes.get(option);
 				System.out.println("How many tickets? (No more than 20)");
 				option = Dialogue.getUserCommand(20);
 				Booker booker = new Booker(UserInterface.user.getInventory(), event);
-				booker.BuyTickets(option);
+				booker.BuyTickets(option, time);
 				System.out.println("\t\t*******************\n"
 						+ "\t\tWaiting Transaction\n"
 						+ "\t\t*******************\n"
 						+ "You can find your ticket(s) in your Inventory");
+			} else if (option == 2) {
+				event.printReviews();
+				System.out.println("Press 0 to go back");
+				Dialogue.getUserCommand(0);
+			} else {
+				System.out.println("\tLeave a Review"
+						+ "\n\nRate your experience 1-5");
+				int rating = Dialogue.getUserCommand(5);
+				System.out.println("Please explain your rating");
+				Scanner scanner = new Scanner(System.in);
+				String comment = scanner.nextLine();
+				event.addReview(UserInterface.user.getUsername(), rating, comment);
 			}
+			System.out.println("Press 0 to exit");
+			Dialogue.getUserCommand(0);
 		}
 		
 	}

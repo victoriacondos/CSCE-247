@@ -36,8 +36,8 @@ public class Theatre extends Event {
 	 * @param directors: the people who directed the production of the threatre show.
 	 * @param cast: actors within the theatre show.
 	 */
-	public Theatre(String title, String location, String time, double price, TheatreGenre genre, ArrayList<String> directors, ArrayList<String> cast) {
-		super(title, location, time, price);
+	public Theatre(String title, String location, ArrayList<String> times, double price, TheatreGenre genre, ArrayList<String> directors, ArrayList<String> cast) {
+		super(title, location, times, price);
 		this.genre = genre;
 		this.directors = directors;
 		this.cast = cast;

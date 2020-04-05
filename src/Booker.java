@@ -23,7 +23,7 @@ public class Booker {
 	 * @param event: event connected to ticket.
 	 * @param seats: location / seating of ticket.
 	 */
-	public void BuyTickets(int numOfTickets) {
+	public void BuyTickets(int numOfTickets, String time) {
 		ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 		int[] seats = new int[numOfTickets];
 		int cost = 0;
@@ -47,7 +47,7 @@ public class Booker {
 				}
 			}
 			this.event.seating.getSeats()[seat-1] = true;
-			ticket = new Ticket(this.event, seat);
+			ticket = new Ticket(this.event, time, seat);
 			tickets.add(ticket);
 			cost += this.event.price;
 		}

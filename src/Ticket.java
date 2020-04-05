@@ -7,10 +7,12 @@ import org.json.simple.JSONObject;
  */
 public class Ticket extends DatabaseObject{ 
 	protected static final String EVENT = "event";
+	protected static final String TIME = "time";
 	protected static final String SEAT = "seat";
 	protected static final String COST = "cost";
 	
 	protected Event event;
+	protected String time;
 	protected int seat;
 	protected double cost;
 	
@@ -22,8 +24,9 @@ public class Ticket extends DatabaseObject{
 	
 	public Ticket() {}
 	
-	public Ticket(Event event, int seat) {
+	public Ticket(Event event, String time, int seat) {
 		this.event = event;
+		this.time = time;
 		this.seat = seat;
 	}
 	
@@ -53,6 +56,7 @@ public class Ticket extends DatabaseObject{
 	
 	public JSONObject toJSON() {
 		JSONObject ticketDetails = new JSONObject();
+		ticketDetails.put(TIME, this.time);
 		ticketDetails.put(SEAT, this.seat);
 		ticketDetails.put(COST, this.cost);
 		ticketDetails.put(EVENT, this.event.toJSON());
@@ -66,7 +70,7 @@ public class Ticket extends DatabaseObject{
 	public String toString() {
 		return "Event: " + this.event.title
 				+ "\nSeat: " + this.seat
-				+ "\nTime: " + this.event.time
+				+ "\nTime: " + this.time
 				+ "\nLocation: " + this.event.location;
 	}
 }
