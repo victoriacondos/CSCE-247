@@ -6,7 +6,7 @@ public class UserInterface {
 	public static Account user;
 	private Dialogue dialogue;
 	private static String menu;
-	private static String[] menuOptions = {"Welcome", "Main Menu", "Find Events", "View Inventory", "Checkout"};
+	private static String[] menuOptions = {"Welcome", "Main Menu"};
 	
 	public UserInterface() {
 		system = new SystemDatabase();

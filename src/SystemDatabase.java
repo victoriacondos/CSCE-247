@@ -1,3 +1,8 @@
+/**
+ * @author Brett Logeais
+ * Purpose: Holds all databases
+ */
+
 import java.util.ArrayList;
 
 public class SystemDatabase {
