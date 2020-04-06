@@ -72,6 +72,10 @@ public class Dialogue {
 		return option;
 	}
 	
+	/**
+	* Purpose: Prompt user to enter username and password
+	* @return: account with corresponding username and password
+	*/
 	public static Account getLogIn() {
 		System.out.println("Username:");
 		String username = scanner.nextLine();
@@ -80,12 +84,20 @@ public class Dialogue {
 		return new Account(username, password);
 	}
 	
+	/**
+	* Purpose: Checks if user is creating a manager aco;unt
+	* @return: true or false of whether or not this is a manager account
+	*/
 	public static boolean signUp() {
 		System.out.println("Is this a Manager Account?\n\nEnter y or n\n");
 		String response = scanner.nextLine();
 		return response.equalsIgnoreCase("y");
 	}
 	
+	/**
+	* Purpose: to create a new event in database with correct info
+	* @return : newly created event
+	*/
 	public static Event createEvent() {
 		Event event = null;
 		System.out.println("Event TITLE:");
@@ -142,6 +154,10 @@ public class Dialogue {
 		}
 		return event;
 	}
+	/**
+	* Purpose: accessor for movie genre
+	* @return: correct movie genre
+	*/
 	private static MovieGenre getGenreMovie() {
 		MovieGenre[] genres = MovieGenre.class.getEnumConstants();
 		System.out.println("Enter a GENRE:");
@@ -151,6 +167,10 @@ public class Dialogue {
 		return genres[option-1];
 	}
 	
+	/**
+	* Purpose: accessor for music genre
+	* @return: correct music genre
+	*/
 	private static MusicGenre getGenreMusic() {
 		MusicGenre[] genres = MusicGenre.class.getEnumConstants();
 		System.out.println("Enter a GENRE:");
@@ -159,6 +179,11 @@ public class Dialogue {
 		int option = getUserOption(genres.length);
 		return genres[option-1];
 	}
+	
+	/**
+	* Purpose: accessor for theatre genre
+	* @return correct theatre genre
+	*/
 	private static TheatreGenre getGenreTheatre() {
 		TheatreGenre[] genres = TheatreGenre.class.getEnumConstants();
 		System.out.println("Enter a GENRE:");
@@ -168,6 +193,10 @@ public class Dialogue {
 		return genres[option-1];
 	}
 	
+	/**
+	* Purpose: accessor for MPA Rating
+	* @return: correct MPA Rating
+	*/
 	private static MpaRating getMpaRating() {
 		MpaRating[] ratings = MpaRating.class.getEnumConstants();
 		System.out.println("Enter a MPA RATING:");
