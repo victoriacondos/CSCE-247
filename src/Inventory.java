@@ -69,6 +69,10 @@ public class Inventory extends DatabaseObject {
 		return inventoryDetails;
 	}
 	
+	/**
+	* Purpose: shows purchased ticket and rewards points values
+	* @return String: purchased tickets and rewards
+	*/
 	public String toString() {
 		String inventory = "RewardsPoints: " + this.rewardsPoints
 				+ "\nTickets: ";
