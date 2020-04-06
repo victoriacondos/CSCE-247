@@ -73,10 +73,16 @@ public class Event extends DatabaseObject {
 				"\n     Price: $" + this.price;
 	}
 	
+	/**
+	 * Purpose: adds a new review
+	 */
 	public void addReview(String user, int rating, String comment) {
 		this.reviews.add(new Review(user, rating, comment));
 	}
 	
+	/**
+	 * Purpose: prints the reviews
+	 */
 	public void printReviews() {
 		System.out.println("Reviews for " + this.title + "\n");
 		for (int i = 0; i < reviews.size(); i++) {
@@ -84,6 +90,9 @@ public class Event extends DatabaseObject {
 		}
 	}
 	
+	/**
+	 * Purpose: prints show times
+	 */
 	public int printShowTimes() {
 		String string = "Show Times:\n";
 		for (int i = 0; i < showTimes.size(); i++) {

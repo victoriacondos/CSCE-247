@@ -20,6 +20,9 @@ public class SystemDatabase {
 		plays = new Database("src/eventsTheatre.json");
 	}
 	
+	/**
+	* Purpose: saves all databases
+	*/
 	public void save() {
 		rewards.saveObjects();
 		managers.saveObjects();
@@ -28,6 +31,10 @@ public class SystemDatabase {
 		plays.saveObjects();
 	}
 	
+	/**
+	* Purpose: user can log into account
+	* @return account
+	*/
 	public static Account logIn(Account accountToLogIn) {
 		ArrayList<DatabaseObject> accountsList = managers.getList();
 		for (int i = 0; i < accountsList.size(); i++) {
@@ -47,7 +54,10 @@ public class SystemDatabase {
 		}
 		return null;
 	}
-	
+	/**
+	* Purpose: user sign up for an account
+	* @return true or false if certain criteria has been met
+	*/
 	public static boolean signUp(Account accountToSignUp) {
 		ArrayList<DatabaseObject> accountsList = managers.getList();
 		boolean nameTaken = false;
@@ -60,7 +70,10 @@ public class SystemDatabase {
 		else rewards.addObject(accountToSignUp);
 		return true;
 	}
-	
+	/**
+	* Purpose: user can search username
+	* @return true or false if username is found in database
+	*/
 	private static boolean searchUsername(ArrayList<DatabaseObject> accountsList, String user) {
 		for (int i = 0; i < accountsList.size(); i++) {
 			Account account = (Account)accountsList.get(i);

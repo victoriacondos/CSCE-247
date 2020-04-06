@@ -1,6 +1,14 @@
+/**
+* Author: Brett Logeais
+* Purpose: command that allows users to view inventory
+*/
+
 import java.io.IOException;
 
 public class ViewInventoryCommand implements Command {
+	/**
+	* Purpose: prompts user to show how many tickets they have
+	*/
 	public void execute() {
 		System.out.println(UserInterface.user + "\n\n"
 				+ "Enter:\n"
