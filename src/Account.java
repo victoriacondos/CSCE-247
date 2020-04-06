@@ -59,7 +59,9 @@ public class Account extends DatabaseObject {
 	public String getSecurityAnswer() {
 		return this.securityAnswer;
 	}
-	
+	public Inventory getInventory() {
+		return null;
+	}
 	@Override
 	public JSONObject toJSON() {
 		JSONObject accountDetails = new JSONObject();

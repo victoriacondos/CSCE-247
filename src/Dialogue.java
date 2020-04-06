@@ -1,6 +1,6 @@
 /**
  * @author Brett Logeais
- * Purpose: user interface to the ticketing system
+ * Purpose: I/O for the console
  */
 
 import java.util.ArrayList;
@@ -15,24 +15,16 @@ public class Dialogue {
 	 * @return Command: user-selected command
 	 */
 	public static Command welcome() {
-		System.out.println("Welcome to TicketPlante\n\n"
-				+ "Please enter:\n"
-				+ "\t1) to Log In\n"
-				+ "\t2) to Sign Up\n"
-				+ "\t3) to Continue as Guest\n"
-				+ "\t0) to Exit\n");
-		int option = getUserCommand(3);
-		if (option == 0) return null;
+		String[] options = {"Log In", "Sign Up", "Continue as Guest"};
+		System.out.println("Welcome to TicketPlante\n\nPlease Enter:");
+		for (int i = 0; i < options.length; i++)
+			System.out.println("\t" + (i+1) + ") to " + options[i]);
+		System.out.println("\t0) to Exit");
+		int option = getUserOption(3);
 		if (option == 1) return new LogInCommand();
 		if (option == 2) return new SignUpCommand();
-		else {
-			System.out.println("\n\t-------------------\n"
-					+ "\tContinuing as Guest\n"
-					+ "\t-------------------\n");
-			UserInterface.user = new Account("Guest", "");
-			UserInterface.setMenu(1);
-			return null;
-		}
+		if (option == 3) return new GuestContCommand();
+		return null;
 	}
 	
 	/**
@@ -40,51 +32,44 @@ public class Dialogue {
 	 * @return Command: user-selected command
 	 */
 	public static Command mainMenu() {
-		if (UserInterface.user instanceof ManagerAccount) {
-			System.out.println("Hello Manager " + UserInterface.user.getUsername() + "\n\n"
-					+ "Please enter:\n"
-					+ "\t1) to Add an Event\n"
-					+ "\t2) to Edit an Event\n"
-					+ "\t3) to Remove an Event\n"
-					+ "\t0) to Log Out");
-			int option = getUserCommand(3);
-			if (option == 0) return new LogOutCommand();
-			if (option == 1) return new AddEventCommand();
-			
+		String[] options = {"Add an Event", "Find Columbia Events", "View Inventory"};
+		boolean isManager = UserInterface.user instanceof ManagerAccount;
+		if (isManager) {
+			System.out.println("Hello Manager " + UserInterface.user.getUsername());
+			System.out.println("\t1) to " + options[0]);
 		} else {
-			System.out.println("Hello " + UserInterface.user.getUsername() + "\n\n"
-					+ "Please enter:\n"
-					+ "\t1) to Find Columbia Events\n"
-					+ "\t2) to View Inventory\n"
-					+ "\t0) to Log Out");
-			int option = getUserCommand(2);
-			if (option == 0) return new LogOutCommand();
-			if (option == 1) return new ListEventsCommand();
-			else {
-				return null;
-			}
+			System.out.println("Hello " + UserInterface.user.getUsername());
+			for (int i = 1; i < options.length; i++)
+				System.out.println("\t" + i + ") to " + options[i]);
 		}
+		System.out.println("\t0) to Log Out");
+		int option = getUserOption(2);
+		if (option == 0) return new LogOutCommand();
+		if (!isManager) option++;
+		if (option == 1) return new AddEventCommand();
+		if (option == 2) return new ListEventsCommand();
+		if (option == 3) return new ViewInventoryCommand();
 		return null;
 	}
 	
 	
 	/**
 	 * Purpose: gets user input and checks for validity
-	 * @param numCommands: number of commands available
-	 * @return command: corrected user input
+	 * @param numOptions: number of options available
+	 * @return option: corrected user input
 	 */
-	public static int getUserCommand(int numCommands) {
+	public static int getUserOption(int numOptions) {
 		String input;
-		int command = -1;
-		while (command > numCommands || command < 0) {
+		int option = -1;
+		while (option > numOptions || option < 0) {
 			input = scanner.nextLine();
 			try {
-				command = Integer.parseInt(input);
+				option = Integer.parseInt(input);
 			} catch (NumberFormatException ex) {
 				System.out.println("\tERROR: Invalid Input");
 			}
 		}
-		return command;
+		return option;
 	}
 	
 	public static Account getLogIn() {
@@ -107,86 +92,89 @@ public class Dialogue {
 		String title = scanner.nextLine();
 		System.out.println("Event LOCATION:");
 		String location = scanner.nextLine();
-		System.out.println("Event TIME:");
-		String time = scanner.nextLine();
+		System.out.println("List the SHOW TIMES. Enter 0 when done");
+		ArrayList<String> times = new ArrayList<String>();
+		String response = "";
+		while (!response.equals("0")) {
+			response = scanner.nextLine();
+			if (!response.equals("0")) times.add(response);
+		}
 		System.out.println("Event STANDARD TICKET PRICE:");
 		double price = Double.parseDouble(scanner.nextLine());
-		System.out.println("Is this a (M)ovie, (C)oncert, (P)lay, or (N)one listed?");
-		String response = scanner.nextLine();
-		if (response.equalsIgnoreCase("C")) { 
-			System.out.println("List the artists. Enter 0 when done");
+		System.out.println("Is this a (C)oncert, (T)heatre, a (M)ovie or (N)one listed?");
+		String type = scanner.nextLine();
+		response = "";
+		if (type.equalsIgnoreCase("C")) { 
+			System.out.println("List the ARTISTS. Enter 0 when done");
 			ArrayList<String> artists = new ArrayList<String>();
-			String response2 = "";
-			while (!response2.equals("0")) {
-				response2 = scanner.nextLine();
-				artists.add(response2);
+			while (!response.equals("0")) {
+				response = scanner.nextLine();
+				if (!response.equals("0")) artists.add(response);
 			}
 			MusicGenre genre = getGenreMusic();
 			System.out.println("Explicit content? y or n");
-			response2 = scanner.nextLine();
-			boolean explicit = response2.equalsIgnoreCase("y");
-			event = new Concert(title, location, time, price, genre, explicit, artists);
+			response = scanner.nextLine();
+			boolean explicit = response.equalsIgnoreCase("y");
+			event = new Concert(title, location, times, price, genre, explicit, artists);
+		} else {
+			System.out.println("List the DIRECTORS. Enter 0 when done.");
+			ArrayList<String> directors = new ArrayList<String>();
+			while (!response.equals("0")) {
+				response = scanner.nextLine();
+				if (!response.equals("0")) directors.add(response);
+			}
+			response = "";
+			ArrayList<String> cast = new ArrayList<String>();
+			System.out.println("List the CAST. Enter 0 when done.");
+			while (!response.equals("0")) {
+				response = scanner.nextLine();
+				if (!response.equals("0")) cast.add(response);
+			}
+			if (type.equalsIgnoreCase("T")) {
+				TheatreGenre genre = getGenreTheatre();
+				event = new Theatre(title, location, times, price, genre, directors, cast);
+			} else {
+				MovieGenre genre = getGenreMovie();
+				MpaRating rating = getMpaRating();
+				event = new Movie(title, location, times, price, genre, rating, directors, cast);
+			}
+			
 		}
 		return event;
 	}
 	private static MovieGenre getGenreMovie() {
-		System.out.println("Enter a genre:");
-		String[] genres = {"ACTION", "ADVENTURE", "COMEDY", "DRAMA", "HORROR", "MUSICAL", "ROMANCE", "SCIFI"};
-		for (int i = 0; i < genres.length; i++) {
+		MovieGenre[] genres = MovieGenre.class.getEnumConstants();
+		System.out.println("Enter a GENRE:");
+		for (int i = 0; i < genres.length; i++)
 			System.out.println("\n\t" + (i+1) + ") " + genres[i]);
-		}
-		MovieGenre genre = null;
-		int response = getUserCommand(genres.length);
-		switch (response) {
-			case 1:
-				genre = MovieGenre.ACTION;
-			case 2:
-				genre = MovieGenre.ADVENTURE;
-			case 3:
-				genre = MovieGenre.COMEDY;
-			case 4:
-				genre = MovieGenre.DRAMA;
-			case 5:
-				genre = MovieGenre.HORROR;
-			case 6:
-				genre = MovieGenre.MUSICAL;
-			case 7:
-				genre = MovieGenre.ROMANCE;
-			default:
-				genre = MovieGenre.SCIFI;
-		}
-		return genre;
+		int option = getUserOption(genres.length);
+		return genres[option-1];
 	}
 	
 	private static MusicGenre getGenreMusic() {
-		System.out.println("Enter a genre:");
-		String[] genres = {"COUNTRY", "EDM", "JAZZ", "POP", "RnB", "HIPHOP" , "ROCK", "SEASONAL"};
-		for (int i = 0; i < genres.length; i++) {
+		MusicGenre[] genres = MusicGenre.class.getEnumConstants();
+		System.out.println("Enter a GENRE:");
+		for (int i = 0; i < genres.length; i++)
 			System.out.println("\n\t" + (i+1) + ") " + genres[i]);
-		}
-		MusicGenre genre = null;
-		int response = getUserCommand(genres.length);
-		switch (response) {
-			case 1:
-				genre = MusicGenre.COUNTRY;
-			case 2:
-				genre = MusicGenre.EDM;
-			case 3:
-				genre = MusicGenre.HIPHOP;
-			case 4:
-				genre = MusicGenre.JAZZ;
-			case 5:
-				genre = MusicGenre.POP;
-			case 6:
-				genre = MusicGenre.RnB;
-			case 7:
-				genre = MusicGenre.ROCK;
-			default:
-				genre = MusicGenre.SEASONAL;
-		}
-		return genre;
+		int option = getUserOption(genres.length);
+		return genres[option-1];
 	}
 	private static TheatreGenre getGenreTheatre() {
-		return null;
+		TheatreGenre[] genres = TheatreGenre.class.getEnumConstants();
+		System.out.println("Enter a GENRE:");
+		for (int i = 0; i < genres.length; i++)
+			System.out.println("\n\t" + (i+1) + ") " + genres[i]);
+		int option = getUserOption(genres.length);
+		return genres[option-1];
 	}
+	
+	private static MpaRating getMpaRating() {
+		MpaRating[] ratings = MpaRating.class.getEnumConstants();
+		System.out.println("Enter a MPA RATING:");
+		for (int i = 0; i < ratings.length; i++)
+			System.out.println("\n\t" + (i+1) + ") " + ratings[i]);
+		int option = getUserOption(ratings.length);
+		return ratings[option-1];
+	}
+	
 }

@@ -5,13 +5,13 @@ public class AddEventCommand implements Command{
 		Event event = Dialogue.createEvent();
 		if (event == null) return;
 		if (event instanceof Movie) {
-			
+			UserInterface.system.movies.addObject(event);
 		} else if (event instanceof Concert) {
 			UserInterface.system.concerts.addObject(event);
 		} else if (event instanceof Theatre) {
-			
+			UserInterface.system.concerts.addObject(event);
 		} else {
-			
+			return;
 		}
 	}
 }

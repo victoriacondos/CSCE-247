@@ -2,17 +2,37 @@
  * @author Elizabeth Stevenson, Victoria Condos
  * Purpose: to check which tickets have been purchased and deal with rewards
  */import java.io.*; //TODO - change this to only be things used probably
-public class Inventory {
-	private Ticket[] purchasedTickets;
+import java.util.ArrayList;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+public class Inventory extends DatabaseObject {
+	private static final String TICKETS = "tickets";
+	private static final String POINTS = "rewardsPoints";
+	
+	private ArrayList<Ticket> purchasedTickets;
 	private double rewardsPoints;
 	private final String astericksLong = "**************************************************";
-	private final String astericksShort = "****"
-
+	private final String astericksShort = "****";
+	
+	public Inventory(JSONObject objectJSON) {
+		this.rewardsPoints = (double)objectJSON.get(POINTS);
+		JSONArray arrayJSON = (JSONArray)objectJSON.get(TICKETS);
+		ArrayList<Ticket> array = new ArrayList<Ticket>();
+		for (int i = 0; i < arrayJSON.size(); i++) array.add(new Ticket((JSONObject)arrayJSON.get(i)));
+		this.purchasedTickets = array;
+	}
+	
+	public Inventory() {
+		this.rewardsPoints = 0;
+		this.purchasedTickets = new ArrayList<Ticket>();
+	}
+	
 	/**
 	 * Purpose: to get purchased ticket information
 	 * @return purchasedTickets: an array of type Ticket
 	 */
-	public Ticket[] getPurchasedTickets() {
+	public ArrayList<Ticket> getPurchasedTickets() {
 		return purchasedTickets;
 	}
 
@@ -20,7 +40,7 @@ public class Inventory {
 	 * Purpose: to set the purchasedTickets array
 	 * @param purchasedTickets: a ticket
 	 */
-	public void setPurchasedTickets(Ticket[] purchasedTickets) {
+	public void setPurchasedTickets(ArrayList<Ticket> purchasedTickets) {
 		this.purchasedTickets = purchasedTickets;
 	}
 
@@ -39,22 +59,45 @@ public class Inventory {
 	public void setRewardsPoints(double rewardsPoints) {
 		this.rewardsPoints = rewardsPoints;
 	}
-
+	
+	public JSONObject toJSON() {
+		JSONObject inventoryDetails = new JSONObject();
+		inventoryDetails.put(POINTS, this.rewardsPoints);
+		JSONArray array = new JSONArray();
+		for (int i = 0; i < this.purchasedTickets.size(); i++) array.add(purchasedTickets.get(i).toJSON());
+		inventoryDetails.put(TICKETS, array);
+		return inventoryDetails;
+	}
+	
+	public String toString() {
+		String inventory = "RewardsPoints: " + this.rewardsPoints
+				+ "\nTickets: ";
+		for (int i = 0; i < purchasedTickets.size(); i++) {
+			inventory += "\n\n" + (i+1) + ")\n"+ purchasedTickets.get(i).toString();
+		}
+		return inventory;
+	}
+	
 	/**
 	 * Purpose: creates .txt file of each of purchased tickets []
 	 */
 	public void TicketWriter(String ticketName) throws IOException {
-		BufferedWriter outputWriter = new BufferedWriter (new FileWriter (ticketName));
-		
-		for (Ticket ticket : purchasedTickets) {
-			outputWriter.write(astericksLong);
-			outputWriter.newLine();
-			outputWriter.write(astericksShort + ticket.toString() + astericksShort);
-			outputWriter.newLine();
-			outputWriter.write(astericksLong);
-		
-			outputWriter.flush();
+		try {
+			BufferedWriter outputWriter = new BufferedWriter (new FileWriter (ticketName));
+			
+			for (Ticket ticket : purchasedTickets) {
+				outputWriter.write(astericksLong);
+				outputWriter.newLine();
+				outputWriter.write(astericksShort + ticket.toString() + astericksShort);
+				outputWriter.newLine();
+				outputWriter.write(astericksLong);
+				outputWriter.newLine();
+				outputWriter.newLine();
+				outputWriter.flush();
+			}
 			outputWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }

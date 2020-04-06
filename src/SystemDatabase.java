@@ -15,6 +15,14 @@ public class SystemDatabase {
 		plays = new Database("src/eventsTheatre.json");
 	}
 	
+	public void save() {
+		rewards.saveObjects();
+		managers.saveObjects();
+		movies.saveObjects();
+		concerts.saveObjects();
+		plays.saveObjects();
+	}
+	
 	public static Account logIn(Account accountToLogIn) {
 		ArrayList<DatabaseObject> accountsList = managers.getList();
 		for (int i = 0; i < accountsList.size(); i++) {
