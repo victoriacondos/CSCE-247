@@ -15,7 +15,6 @@ public class Booker {
 	public Booker(Inventory inventory, Event event) {
 		this.inventory = inventory;
 		this.event = event;
-		// TODO Auto-generated constructor stub ***-> needed for functionality?
 	}
 	
 	/**
@@ -38,13 +37,10 @@ public class Booker {
 			while (oldSeat) {
 				seat = Dialogue.getUserOption(numOfSeats);
 				oldSeat = false;
-				if (this.event.seating.getSeats()[i] == true) oldSeat = true;
-				for (int j = 0; j < seats.length; j++) {
+				if (this.event.seating.getSeats()[seat-1]) oldSeat = true;
+				for (int j = 0; j < seats.length; j++)
 					if (seat == seats[j]) oldSeat = true;
-				}
-				if (!oldSeat) {
-					seats[i] = seat;
-				}
+				if (!oldSeat) seats[i] = seat;
 			}
 			this.event.seating.getSeats()[seat-1] = true;
 			ticket = new Ticket(this.event, time, seat);
