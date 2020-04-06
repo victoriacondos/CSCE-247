@@ -1,3 +1,7 @@
+/**
+* author: Brett Logeais
+* Purpose: creates database to store objects from JSON files into arrays and create objects for system
+*/
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,11 +16,18 @@ public class Database {
 	private ArrayList<DatabaseObject> objectList;
 	private String fileName;
 	
+	/**
+	* Purpose: Constructor to initiate loading of objects into database
+	* @param: fileName: name of file that is being read
+	*/
 	public Database(String fileName) {
 		this.fileName = fileName;
 		this.loadObjects();
 	}
 	
+	/**
+	* Purpose: reads file and stores objects from JSON file into array of correct type
+	*/
 	public void loadObjects() {
 		ArrayList<DatabaseObject> objects = new ArrayList<DatabaseObject>();
 		try {
@@ -34,6 +45,9 @@ public class Database {
 		}
 	}
 	
+	/**
+	*Purpose: saves objects in JSON file
+	*/
 	public void saveObjects() {
 		JSONArray accountsJSON = new JSONArray();
 		for (int i = 0; i < objectList.size(); i++) {
@@ -47,10 +61,19 @@ public class Database {
         }
 	}
 	
+	/**
+	* Purpose: adds parameterized object to objectList
+	* @param object: object being added to objectList
+	*/
 	public void addObject(DatabaseObject object) {
 		objectList.add(object);
 	}
 	
+	/**
+	* Purpose: uses info from JSON files to create new objects of correct type
+	* @param objectJSON: JSONObject that is being converted to correct object type
+	* @return: correct type of object (RewardsAccount, ManagerAccount, Movie, Concert, or Theatre)
+	*/
 	private DatabaseObject JSONtoObject(JSONObject objectJSON) {
 		DatabaseObject object;
 		if (this.fileName.equals("src/accountsRewards.json")) {
@@ -69,10 +92,18 @@ public class Database {
 		return object;
 	}
 	
+	/**
+	* Purpose: Accessor for object lists
+	* @return: list of objects of a certain type
+	*/
 	public ArrayList<DatabaseObject> getList() {
 		return objectList;
 	}
 	
+	/**
+	* Purpose: prints a numbered list of all objects in database (from start point)
+	* @return int of total number of objects (from start point)
+	*/
 	public int printDatabase(int start) {
 		int count = start;
 		for (int i = 0; i < this.objectList.size(); i++) {
