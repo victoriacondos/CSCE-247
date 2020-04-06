@@ -13,7 +13,10 @@ public class Account extends DatabaseObject {
 	private String password;
 	private String securityAnswer;
 	
-	
+	/**
+	* Purpose: to create a new account from JSON file
+	* @param objectJSON: contains info about account username password and security answer
+	*/
 	public Account(JSONObject objectJSON) {
 		this.username = (String)objectJSON.get(USER);
 		this.password = (String)objectJSON.get(PASS);
@@ -32,9 +35,9 @@ public class Account extends DatabaseObject {
 	
 	/**
 	 * Purpose: to create a new account with username, password, and security answer
-	 * @param username
-	 * @param password
-	 * @param secAnswer
+	 * @param username: username of an account
+	 * @param password: password of an account
+	 * @param secAnswer: security answer for an account
 	 */
 	public Account(String username, String password, String secAnswer) {
 		this.username = username;
@@ -42,23 +45,43 @@ public class Account extends DatabaseObject {
 		this.securityAnswer = secAnswer;
 	}
 	
+	/**
+	* Purpose: to access an existing account TODO- ?
+	* @param account: a pre-existing account
+	*/
 	public Account(Account account) {
 		this.username = account.getUsername();
 		this.password = account.getPassword();
 		this.securityAnswer = account.getSecurityAnswer();
 	}
-
+	
+	/**
+	* Purpose: accessor for account username
+	* @return: a string of account's username
+	*/
 	public String getUsername() {
 		return this.username;
 	}
 	
+	/**
+	* Purpose: accessor for account password
+	* @return: a string of account's password
+	*/
 	public String getPassword() {
 		return this.password;
 	}
 	
+	/**
+	* Purpose: accessor for accounts answer to security question
+	* @return: string of account's security answer
+	*/
 	public String getSecurityAnswer() {
 		return this.securityAnswer;
 	}
+	/**
+	* Purpose: TODO- ??
+	* @return: Inventory of accounts TODO-??
+	*/
 	public Inventory getInventory() {
 		return null;
 	}
