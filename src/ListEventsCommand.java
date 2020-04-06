@@ -1,6 +1,14 @@
+/**
+* Author: Brett Logeais
+* Purpose: command that lists events
+*/
+
 import java.util.Scanner;
 
 public class ListEventsCommand implements Command {
+	/**
+	* Purpose: lists all events
+	*/
 	public void execute() {
 		while (true) {
 			System.out.println("\nEvents in Columbia\n\n"
