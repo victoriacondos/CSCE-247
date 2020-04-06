@@ -4,9 +4,17 @@
  */
 public enum MovieGenre {
 	ACTION, ADVENTURE, COMEDY, DRAMA, HORROR, MUSICAL, ROMANCE, SCIFI;
+	/**
+	* Purpose: returns name
+	* @return: name
+	*/
 	public String toString() {
 		return this.name();
 	}
+	/**
+	* Purpose: finnds the movie genre from input
+	* @return MovieGenre
+	*/
 	public static MovieGenre fromString(String string) {
 		MovieGenre genre;
 		if (string.equalsIgnoreCase("ACTION")) {
