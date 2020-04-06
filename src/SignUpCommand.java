@@ -1,5 +1,11 @@
-
+/**
+* Author: Brett Logeais
+* Purpose: command that allows a user to sign up
+*/
 public class SignUpCommand implements Command {
+	/**
+	* Purpose: prompts user to sign up for an account
+	*/
 	public void execute() {
 		boolean signedUp = false;
 		boolean isManager = Dialogue.signUp();
