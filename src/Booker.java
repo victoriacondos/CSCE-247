@@ -51,8 +51,11 @@ public class Booker {
 			tickets.add(ticket);
 			cost += this.event.price;
 		}
-		System.out.println("Total Cost: " + cost + "\n You recieved " + (cost/10) + " Rewards Points");
-		this.inventory.setRewardsPoints(this.inventory.getRewardsPoints() + cost/10);
+		System.out.println("Total Cost: " + cost);
+		if (!UserInterface.user.getUsername().equals("Guest")) {
+			System.out.println("You recieved " + (cost/10) + " Rewards Points");
+			this.inventory.setRewardsPoints(this.inventory.getRewardsPoints() + cost/10);
+		}
 		this.inventory.getPurchasedTickets().addAll(tickets);
 	}
 	

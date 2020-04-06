@@ -10,7 +10,7 @@ public class GuestContCommand implements Command {
 		System.out.println("\n\t-------------------\n"
 				+ "\tContinuing as Guest\n"
 				+ "\t-------------------\n");
-		UserInterface.user = new Account("Guest", "");
+		UserInterface.user = new RewardsAccount("Guest", "", "", new Inventory());
 		UserInterface.setMenu(1);
 	}
 }
