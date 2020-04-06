@@ -14,6 +14,10 @@ public class Seating extends DatabaseObject {
 	private boolean soldOut;
 	private int handicapSeats[];
 	
+
+	/**
+	* Purpose: creates seating from json
+	*/
 	public Seating(JSONObject objectJSON) {
 		JSONArray arrayJSON = (JSONArray)objectJSON.get(SEATS);
 		boolean[] array = new boolean[arrayJSON.size()];	
@@ -32,6 +36,13 @@ public class Seating extends DatabaseObject {
 		this.handicapSeats = array2;
 	}
 	
+	
+	/**
+	* Purpose: creates seating from number of seats, row length, and handicapped
+	* @param numOfSeats
+	* @param rowLength
+	* @param handicapped
+	*/
 	public Seating(int numOfSeats, int rowLength, int[] handicapped) {
 		this.seats = new boolean[numOfSeats];
 		this.rowLength = rowLength;
@@ -71,6 +82,10 @@ public class Seating extends DatabaseObject {
 		this.soldOut = soldOut;
 	}
 	
+	/**
+	 * Purpose: to check if a seat is handicapped
+	 * @return true or false
+	 */
 	public boolean isHandicap(int seat) {
 		for (int i = 0; i < handicapSeats.length; i++) {
 			if (seat+1 == handicapSeats[i]) return true;
