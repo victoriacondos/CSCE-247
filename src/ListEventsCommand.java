@@ -13,7 +13,7 @@ public class ListEventsCommand implements Command {
 			System.out.println("\t\tTHEATRE EVENTS\n");
 			int playCount = totalCount = UserInterface.system.plays.printDatabase(playStart);
 			System.out.println("Enter the number of the Event you would like to view, or 0 to exit:");
-			int response = Dialogue.getUserCommand(playCount);
+			int response = Dialogue.getUserOption(playCount);
 			playCount -= concertCount;
 			concertCount -= movieCount;
 			if (response == 0) return;
@@ -27,14 +27,14 @@ public class ListEventsCommand implements Command {
 					+ "\t2) to View User Reviews\n"
 					+ "\t3) to Leave a Review\n"
 					+ "\t0) to Go Back");
-			int option = Dialogue.getUserCommand(3);
+			int option = Dialogue.getUserOption(3);
 			if (option == 1) {
 				System.out.println("What Show Time?");
 				int options = event.printShowTimes();
-				option = Dialogue.getUserCommand(options);
+				option = Dialogue.getUserOption(options);
 				String time = event.showTimes.get(option);
 				System.out.println("How many tickets? (No more than 20)");
-				option = Dialogue.getUserCommand(20);
+				option = Dialogue.getUserOption(20);
 				Booker booker = new Booker(UserInterface.user.getInventory(), event);
 				booker.BuyTickets(option, time);
 				System.out.println("\t\t********************\n"
@@ -44,18 +44,18 @@ public class ListEventsCommand implements Command {
 			} else if (option == 2) {
 				event.printReviews();
 				System.out.println("Press 0 to go back");
-				Dialogue.getUserCommand(0);
+				Dialogue.getUserOption(0);
 			} else {
 				System.out.println("\tLeave a Review"
 						+ "\n\nRate your experience 1-5");
-				int rating = Dialogue.getUserCommand(5);
+				int rating = Dialogue.getUserOption(5);
 				System.out.println("Please explain your rating");
 				Scanner scanner = new Scanner(System.in);
 				String comment = scanner.nextLine();
 				event.addReview(UserInterface.user.getUsername(), rating, comment);
 			}
 			System.out.println("Press 0 to exit");
-			Dialogue.getUserCommand(0);
+			Dialogue.getUserOption(0);
 		}
 		
 	}

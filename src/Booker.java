@@ -36,7 +36,7 @@ public class Booker {
 			int seat = -1;
 			oldSeat = true;
 			while (oldSeat) {
-				seat = Dialogue.getUserCommand(numOfSeats);
+				seat = Dialogue.getUserOption(numOfSeats);
 				oldSeat = false;
 				if (this.event.seating.getSeats()[i] == true) oldSeat = true;
 				for (int j = 0; j < seats.length; j++) {

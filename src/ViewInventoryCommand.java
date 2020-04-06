@@ -6,7 +6,7 @@ public class ViewInventoryCommand implements Command {
 				+ "Enter:\n"
 				+ "\t1) to Print Tickets\n"
 				+ "\t0) to exit\n");
-		int option = Dialogue.getUserCommand(1);
+		int option = Dialogue.getUserOption(1);
 		if (option == 0) return;
 		Inventory i = UserInterface.user.getInventory();
 		try {
