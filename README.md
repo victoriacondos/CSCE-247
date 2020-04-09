@@ -1,6 +1,8 @@
 # PortiasPlantesApp
 TicketPlante
 
+https://youtu.be/DKaDKL34Egk
+
 Brett first commit
   Added files:
     TicketPlanteDriver.java
