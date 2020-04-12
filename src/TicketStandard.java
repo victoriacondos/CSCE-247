@@ -3,7 +3,7 @@
  * @author Victoria Condos
  * Purpose: A ticket decoration for an event that is not IMAX or 3D
  */
-public class TicketStandard {
+public class TicketStandard extends Ticket {
 	private Ticket ticket;
 	private final double STANDARD_PRICE = 10.0;
 	/**
