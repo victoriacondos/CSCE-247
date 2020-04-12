@@ -3,7 +3,7 @@
  * @author Victoria Condos
  * Purpose: A ticket decoration for an event with IMAX viewing type
  */
-public class TicketIMAX {
+public class TicketIMAX extends Ticket{
 	private Ticket ticket;
 	private final double IMAX_PRICE = 12.0;
 	/**

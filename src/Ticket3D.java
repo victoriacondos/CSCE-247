@@ -3,7 +3,7 @@
  * @author Victoria Condos
  * Purpose: A ticket decoration for an event with 3D viewing type
  */
-public class Ticket3D {
+public class Ticket3D extends Ticket {
 	private Ticket ticket;
 	private final double PRICE_3D = 15.0;
 	/**
