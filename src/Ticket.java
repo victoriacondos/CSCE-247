@@ -39,6 +39,13 @@ public class Ticket extends DatabaseObject{
 		return this.event;
 	}
 	
+	/** Purpose: Accessor for time
+	 * @return String of event time
+	 */
+	public String getTime() {
+		return this.time;
+	}
+	
 	/**
 	 * Purpose: Accessor for ticket seat number
 	 * @return: the ticket's corresponding seat number
