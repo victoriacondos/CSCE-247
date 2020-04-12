@@ -58,6 +58,41 @@ public class Event extends DatabaseObject {
 		this.reviews = new ArrayList<Review>();
 	}
 	
+	public Event(String title, String location, double price) {
+		this.title = title;
+		this.location = location;
+		//this.showTimes = times;
+		this.price = price;
+		int[] hand = {};
+		//this.seating = new Seating(50, 10, hand);
+		this.reviews = new ArrayList<Review>();
+	}
+	
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
 	/**
 	 * Purpose: returns the title, location, time, and price of event
 	 * @return title: name of event
