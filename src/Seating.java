@@ -26,12 +26,12 @@ public class Seating extends DatabaseObject {
 		}
 		this.seats = array;
 		
-		this.rowLength = (int)(long)objectJSON.get(ROW);
+		this.rowLength = ((Number)objectJSON.get(ROW)).intValue();
 		
 		arrayJSON = (JSONArray)objectJSON.get(HANDI);
 		int[] array2 = new int[arrayJSON.size()];	
 		for (int i = 0; i < array2.length; i++) {
-			array2[i] = (int)arrayJSON.get(i);
+			array2[i] = ((Number)arrayJSON.get(i)).intValue();
 		}
 		this.handicapSeats = array2;
 	}

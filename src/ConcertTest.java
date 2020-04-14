@@ -1,4 +1,6 @@
 import static org.junit.Assert.*;
+
+import org.json.simple.JSONObject;
 import org.junit.Test;
 import java.util.ArrayList;
 
@@ -73,9 +75,12 @@ public class ConcertTest {
 	@Test
 	public void testToString() {
 		Concert testConcert = new Concert("Test Event", "Ampitheater", timeEx , 5.00, genre, false, artistsEx);
-		String testString = super.toString() + " Genre: " + this.genre + " Explicit Content: " + 
-				false + "Artists: " + this.artistsEx;
+		String testString = "Title: " + this.testConcert.title +
+				"\n     Location: " + this.testConcert.location + 
+				"\n     Price: $" + this.testConcert.price +
+				"\n     Genre: " + genre +
+				"\n     Explicit Content: " + false +
+				"\n     Artists: " + artistsEx;
 		assertEquals(testConcert.toString(), testString);
 	}
-	
 }

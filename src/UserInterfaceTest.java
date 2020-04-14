@@ -1,9 +1,9 @@
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class UserInterfaceTest {
+public class UserInterfaceTest {
 	
 	@Test
 	public void runTest() {

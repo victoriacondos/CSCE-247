@@ -5,7 +5,7 @@
  */
 public class TicketStandard extends Ticket {
 	private Ticket ticket;
-	private final double STANDARD_PRICE = 10.0;
+	private final double STANDARD_PRICE = 1.0;
 	/**
 	 * Purpose: constructor that sets private ticket to param ticket
 	 * @param ticket: the ticket that is being decorated
@@ -25,6 +25,6 @@ public class TicketStandard extends Ticket {
 	 * @return double of ticket's new price
 	 */
 	public double getCost() {
-		return ticket.getCost() + STANDARD_PRICE;
+		return ticket.getCost() * STANDARD_PRICE;
 	}
 }

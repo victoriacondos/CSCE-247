@@ -3,7 +3,7 @@
  * @author Victoria Condos
  * Purpose: applies discount to cost for a senior citizen account purchasing a ticket
  */
-public class SeniorDiscount {
+public class SeniorDiscount extends Ticket {
 	private Ticket ticket;
 	private final double PERCENT_OF_TOTAL = .80; 
 	

@@ -94,11 +94,13 @@ public class MovieTest {
 	@Test
 	public void testToString() {
 		Movie testMovie = new Movie("The Folklore", "Jones Theater", timesEx, 5.00, genre, rating, directorsEx, castEx);
-		String testString = super.toString()
-				+ "\n     Genre: " + this.genre
-				+ "\n     Rating: " + this.rating
-				+ "\n     Directors: " + this.directorsEx
-				+ "\n     Cast: " + this.castEx;
+		String testString = "Title: " + this.testMovie.title +
+				"\n     Location: " + this.testMovie.location + 
+				"\n     Price: $" + this.testMovie.price +
+				"\n     Genre: " + genre +
+				"\n     Rating: " + rating +
+				"\n     Directors: " + directorsEx +
+				"\n     Cast: " + castEx;
 		assertEquals(testMovie.toString(), testString);
 	}
 	

@@ -74,8 +74,12 @@ public class TheatreTest {
 	@Test
 	public void testToString() {
 		Theatre testTheatre = new Theatre("Showtime", "LongStreet Theatre", timesEx, 5.00, genre, directorsEx, castEx);
-		String testString = super.toString() + " Genre: " + this.genre + " Directors: " + this.directorsEx +
-				" Cast: " + this.castEx;
+		String testString = "Title: " + this.testTheatre.title +
+				"\n     Location: " + this.testTheatre.location + 
+				"\n     Price: $" + this.testTheatre.price +
+				"\n     Genre: " + genre +
+				"\n     Directors: " + directorsEx +
+				"\n     Cast: " + castEx;
 		assertEquals(testTheatre.toString(), testString);
 	}
 	

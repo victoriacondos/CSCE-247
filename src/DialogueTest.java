@@ -7,7 +7,7 @@ import java.io.PrintStream;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 /**
  * @author Brett Logeais
@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
  */
 
 
-class DialogueTest {
+public class DialogueTest {
 	
 	private final ByteArrayOutputStream output = new ByteArrayOutputStream();
 	

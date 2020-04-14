@@ -104,8 +104,9 @@ public class Concert extends Event {
 	 * @return String statement of parameters from Concert.
 	 */
 	public String toString() {
-		return super.toString() + " Genre: " + this.genre + " Explicit Content: " + 
-				this.explicitContent + "Artists: " + this.artists;
+		return super.toString() + "\n     Genre: " + this.genre +
+				"\n     Explicit Content: " + this.explicitContent +
+				"\n     Artists: " + this.artists;
 	}
 	
 }

@@ -5,7 +5,7 @@
  */
 public class TicketIMAX extends Ticket{
 	private Ticket ticket;
-	private final double IMAX_PRICE = 12.0;
+	private final double IMAX_PRICE = 1.2;
 	/**
 	 * Purpose: constructor that sets private ticket to param ticket
 	 * @param ticket: the ticket that is being decorated
@@ -25,6 +25,6 @@ public class TicketIMAX extends Ticket{
 	 * @return double of ticket's new price
 	 */
 	public double getCost() {
-		return ticket.getCost() + IMAX_PRICE;
+		return ticket.getCost() * IMAX_PRICE;
 	}
 }

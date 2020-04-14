@@ -61,10 +61,10 @@ public class Event extends DatabaseObject {
 	public Event(String title, String location, double price) {
 		this.title = title;
 		this.location = location;
-		//this.showTimes = times;
+		this.showTimes = new ArrayList<String>();
 		this.price = price;
 		int[] hand = {};
-		//this.seating = new Seating(50, 10, hand);
+		this.seating = new Seating(50, 10, hand);
 		this.reviews = new ArrayList<Review>();
 	}
 	

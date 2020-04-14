@@ -3,7 +3,7 @@
  * @author Victoria Condos
  * Purpose: applies a discount to cost for a student account purchasing a ticket
  **/
- class StudentDiscount {
+ class StudentDiscount extends Ticket {
 	private Ticket ticket;
 	private final double PERCENT_OF_TOTAL = .90;
 	

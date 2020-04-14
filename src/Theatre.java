@@ -111,8 +111,9 @@ public class Theatre extends Event {
 	 * @return String statement of parameters from Theatre.
 	 */
 	public String toString() {
-		return super.toString() + " Genre: " + this.genre + " Directors: " + this.directors +
-				" Cast: " + this.cast;
+		return super.toString() + "\n     Genre: " + this.genre +
+				"\n     Directors: " + this.directors +
+				"\n     Cast: " + this.cast;
 	}
 	
 }

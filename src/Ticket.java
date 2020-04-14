@@ -18,7 +18,7 @@ public class Ticket extends DatabaseObject{
 	
 	public Ticket(JSONObject objectJSON) {
 		this.time = (String)objectJSON.get(TIME);
-		this.seat = (int)(long)objectJSON.get(SEAT);
+		this.seat = ((Number)objectJSON.get(SEAT)).intValue();
 		this.cost = (double)objectJSON.get(COST);
 		this.event = new Event((JSONObject)objectJSON.get(EVENT));
 	}
@@ -29,6 +29,7 @@ public class Ticket extends DatabaseObject{
 		this.event = event;
 		this.time = time;
 		this.seat = seat;
+		this.cost = event.price;
 	}
 	
 	/**

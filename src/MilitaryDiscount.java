@@ -3,7 +3,7 @@
  * @author Victoria Condos
  * Purpose: applies discount to cost for a military account purchasing a ticket
  */
-public class MilitaryDiscount {
+public class MilitaryDiscount extends Ticket {
 	private Ticket ticket;
 	private final double PERCENT_OF_TOTAL = .75;
 	
@@ -20,7 +20,7 @@ public class MilitaryDiscount {
 	 * @return String statement of all of tickets information
 	 */
 	public String toString() {
-		return ticket.toString() + " Discout: Military";
+		return ticket.toString() + " Discount: Military";
 	}
 	
 	/**

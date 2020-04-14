@@ -19,7 +19,7 @@ public class Review extends DatabaseObject {
 	*/
 	public Review(JSONObject objectJSON) {
 		this.user = (String)objectJSON.get(USER);
-		this.rating = (int)(long)objectJSON.get(RATING);
+		this.rating = ((Number)objectJSON.get(RATING)).intValue();
 		this.comment = (String)objectJSON.get(COMMENT);
 	}
 	
