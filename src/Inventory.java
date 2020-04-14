@@ -85,7 +85,7 @@ public class Inventory extends DatabaseObject {
 	/**
 	 * Purpose: creates .txt file of each of purchased tickets []
 	 */
-	public void TicketWriter(String ticketName) throws IOException {
+	public void TicketWriter(String ticketName) {
 		try {
 			BufferedWriter outputWriter = new BufferedWriter (new FileWriter (ticketName));
 			

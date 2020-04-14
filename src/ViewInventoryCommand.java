@@ -17,10 +17,6 @@ public class ViewInventoryCommand implements Command {
 		int option = Dialogue.getUserOption(1);
 		if (option == 0) return;
 		Inventory i = UserInterface.user.getInventory();
-		try {
-			i.TicketWriter(UserInterface.user.getUsername() + "'s Tickets");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		i.TicketWriter(UserInterface.user.getUsername() + "'s Tickets");
 	}
 }
