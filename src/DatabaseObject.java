@@ -1,27 +1,13 @@
 /**
 * author: Brett Logeais
-* Purpose: 
+* Purpose: base class for objects to be stored in a database
 */
 import org.json.simple.JSONObject;
 
-public class DatabaseObject {
+public abstract class DatabaseObject {
+
 	/**
-	* Purpose: default constructor for DatabaseObject TODO-??
+	* Purpose: to create a JSONObject from a DatabaseObject
 	*/
-	public DatabaseObject() {}
-	
-	/**
-	* Purpose: constructor for object from JSON file
-	* @param objectJSON: an object from a JSON file
-	*/
-	public DatabaseObject(JSONObject objectJSON) {
-	}
-	
-	/**
-	* Purpose:
-	* return: null
-	*/
-	public JSONObject toJSON() {
-		return null;
-	}
+	public abstract JSONObject toJSON();
 }
