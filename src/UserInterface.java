@@ -12,6 +12,7 @@ public class UserInterface {
 		system = new SystemDatabase();
 		menu = menuOptions[0];
 		dialogue = new Dialogue();
+		user = new Account("", "");
 	}
 	
 	public void run() {

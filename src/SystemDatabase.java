@@ -71,7 +71,7 @@ public class SystemDatabase {
 		return true;
 	}
 	/**
-	* Purpose: user can search username
+	* Purpose: to determine if username is already in use
 	* @return true or false if username is found in database
 	*/
 	private static boolean searchUsername(ArrayList<DatabaseObject> accountsList, String user) {

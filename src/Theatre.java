@@ -17,7 +17,7 @@ public class Theatre extends Event {
 	
 	public Theatre(JSONObject objectJSON) {
 		super(objectJSON);
-		this.genre = (TheatreGenre)objectJSON.get(GENRE);
+		this.genre = TheatreGenre.valueOf((String)objectJSON.get(GENRE));
 		
 		JSONArray arrayJSON = (JSONArray)objectJSON.get(DIRECTORS);
 		ArrayList<String> array = new ArrayList<String>();

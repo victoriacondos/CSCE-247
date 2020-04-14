@@ -18,7 +18,7 @@ public class Concert extends Event {
 	
 	public Concert(JSONObject objectJSON) {
 		super(objectJSON);
-		this.genre = (MusicGenre)objectJSON.get(GENRE);
+		this.genre = MusicGenre.valueOf((String)objectJSON.get(GENRE));
 		this.explicitContent = (boolean)objectJSON.get(EXPLICIT);
 		JSONArray arrayJSON = (JSONArray)objectJSON.get(ARTISTS);
 		ArrayList<String> array = new ArrayList<String>();

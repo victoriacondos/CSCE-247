@@ -28,7 +28,7 @@ public class RewardsAccount extends Account {
 	*/
 	public RewardsAccount(String username, String password, String secAnswer, Inventory inventory) {
 		super(username, password, secAnswer);
-		setInventrory(inventory);
+		setInventory(inventory);
 	}
 	
 	/**
@@ -38,7 +38,7 @@ public class RewardsAccount extends Account {
 	*/
 	public RewardsAccount(Account account, Inventory inventory) {
 		super(account);
-		setInventrory(inventory);
+		setInventory(inventory);
 	}
 	
 	
@@ -56,7 +56,7 @@ public class RewardsAccount extends Account {
 	* Purpose: mutator for inventory
 	* @param inventory
 	*/
-	public void setInventrory(Inventory inventory) {
+	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
 	}
 	@Override

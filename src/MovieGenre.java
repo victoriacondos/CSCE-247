@@ -11,29 +11,4 @@ public enum MovieGenre {
 	public String toString() {
 		return this.name();
 	}
-	/**
-	* Purpose: finnds the movie genre from input
-	* @return MovieGenre
-	*/
-	public static MovieGenre fromString(String string) {
-		MovieGenre genre;
-		if (string.equalsIgnoreCase("ACTION")) {
-			genre = ACTION;
-		} else if (string.equalsIgnoreCase("ADVENTURE")) {
-			genre = ADVENTURE;
-		} else if (string.equalsIgnoreCase("COMEDY")) {
-			genre = COMEDY;
-		} else if (string.equalsIgnoreCase("DRAMA")) {
-			genre = DRAMA;
-		} else if (string.equalsIgnoreCase("HORROR")) {
-			genre = HORROR;
-		} else if (string.equalsIgnoreCase("MUSICAL")) {
-			genre = MUSICAL;
-		} else if (string.equalsIgnoreCase("ROMANCE")) {
-			genre = ROMANCE;
-		} else {
-			genre = SCIFI;
-		}
-		return genre;
-	}
 }

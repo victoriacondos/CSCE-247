@@ -11,9 +11,9 @@ import java.io.*;
 
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class EventTest {
+public class EventTest {
 
 	public static Event testEvent;
 	public static Review testReview;
