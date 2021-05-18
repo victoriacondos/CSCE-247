@@ -1,23 +1,10 @@
-# PortiasPlantesApp
-TicketPlante
+# Ticket Plante App
+Portia's Plante's Group Project for CSCE 247 
+Group Members:
+- Victoria Condos
+- Elizabeth Stevenson
+- Brett Logeais
+- Elijah Dawkins
 
+Our Presentation: 
 https://youtu.be/DKaDKL34Egk
-
-Brett first commit
-  Added files:
-    TicketPlanteDriver.java
-    UserInterface.java
-    Dialogue.java
-    Command.java
-    LogInCommand.java
-    LogOutCommand.java
-    SignUpCommand.java
-    RewardsAccountDatabase.java
-    Account.java
-    RewardsAccount.java
-    accounts.json
-Brett second commit
-  Added json-simple-1.1.1.jar
-Brett third commit
-  Added try-catch block for parsing integer in getUserCommand in Dialogue
-  Added ManagerAccount.java
